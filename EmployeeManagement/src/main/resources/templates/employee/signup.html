@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- CSS読込 -->
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/employee/signup.css}">
+<!-- JS読込 -->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+<title th:text="#{emp_signup_title}"></title>
+</head>
+<body class="bg-light">
+	<form id="signup-form" method="post" action="/employee/signup"
+		class="form-signup" th:object="${signupForm}">
+		<h1 class="text-center" th:text="#{emp_signup_title}"></h1>
+		<!-- ユーザーID -->
+		<div class="form-group">
+			<label for="emp_id" th:text="#{emp_id}"></label> <input type="text"
+				class="form-control" th:field="*{emp_id}" th:errorclass="is-invalid" />
+			<div class="invalid-feedback" th:errors="*{emp_id}"></div>
+		</div>
+		<!-- パスワード -->
+		<div class="form-group">
+			<label for="emp_password" th:text="#{emp_password}"></label> <input
+				type="text" class="form-control" th:field="*{emp_password}"
+				th:errorclass="is-invalid" />
+			<div class="invalid-feedback" th:errors="*{emp_password}"></div>
+		</div>
+		<!-- ユーザー名 -->
+		<div class="form-group">
+			<label for="emp_name" th:text="#{emp_name}"></label> <input
+				type="text" class="form-control" th:field="*{emp_name}"
+				th:errorclass="is-invalid" />
+			<div class="invalid-feedback" th:errors="*{emp_name}"></div>
+		</div>
+		<!-- 電話番号 -->
+		<label for="emp_phone" th:text="#{emp_phone}"></label> <input type="text"
+			class="form-control" th:field="*{emp_phone}" th:errorclass="is-invalid" />
+		<div class="invalid-feedback" th:errors="*{emp_phone}"></div>
+		<!-- 電話番号 -->
+		<label for="emp_email" th:text="#{emp_email}"></label> <input type="text"
+			class="form-control" th:field="*{emp_email}" th:errorclass="is-invalid" />
+		<div class="invalid-feedback" th:errors="*{emp_email}"></div>
+		<!-- 入社年月日 -->
+		<div class="form-group">
+			<label for="emp_join_date" th:text="#{emp_join_date}"></label> <input
+				type="text" class="form-control" placeholder="yyyy/MM/dd"
+				th:field="*{emp_join_date}" th:errorclass="is-invalid" />
+			<div class="invalid-feedback" th:errors="*{emp_join_date}"></div>
+		</div>
+		<!-- 登録ボタン -->
+		<input type="submit" th:value="#{emp_signup_btn}"
+			class="btn btn-primary w-100 mt-3" />
+	</form>
+</body>
+</html>

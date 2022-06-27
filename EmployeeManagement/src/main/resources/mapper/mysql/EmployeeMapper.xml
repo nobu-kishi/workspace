@@ -2,110 +2,108 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- Mapperとxmlのマッピング -->
-<mapper namespace="com.example.repository.UserMapper">
+<mapper namespace="com.example.repository.EmployeeMapper">
 	<!-- マッピング定義(ユーザー) -->
-	<resultMap type="com.example.domain.user.model.MUser" id="user">
-		<id column="employee_id" property="userId" />
-		<result column="password" property="password" />
-		<result column="user_name" property="userName" />
-		<result column="birthday" property="birthday" />
-		<result column="age" property="age" />
-		<result column="gender" property="gender" />
-		<result column="department_id" property="departmentId" />
-		<result column="role" property="role" />
+		<!-- TODO:resultTypeをSQL毎に変える -->
+	<resultMap type="com.example.domain.user.model.Employees"
+		id="employees">
+		<id column="employee_id" property="emp_id" />
+		<result column="employee_password" property="emp_password" />
+		<result column="employee_name" property="emp_name" />
+		<result column="employee_phone;" property="emp_phone;" />
+		<result column="employee_email" property="emp_email" />
+		<result column="employee_join_date" property="emp_join_date" />
 	</resultMap>
 
 
 
 	<!-- ユーザー1件登録 -->
 	<insert id="insertOne">
-		insert into m_user(
+		insert into employees(
 		employee_id
-		, password
-		, user_name
-		,
-		birthday
-		, age
-		, gender
-		, department_id
-		, role
+		,employee_password
+		,employee_name
+		,employee_email
+		,employee_phone
+		,employee_join_date
 		)
 		values (
-		#{userId}
-		,
-		#{password}
-		, #{userName}
-		, #{birthday}
-		, #{age}
-		, #{gender}
-		,
-		#{departmentId}
-		, #{role}
+		,#{emp_id}
+		,#{emp_password}
+		,#{emp_name}
+		,#{emp_phone}
+		,#{emp_email}
+		,#{emp_join_date}
 		)
 	</insert>
 
 	<!-- ユーザー複数件取得 -->
 	<select id="findMany" resultType="MUser">
 		select *
-		from m_user
+		from employees
 		<where>
-			<if test="userId != null">
-				employee_id like '%' || #{userId} || '%'
+			<if test="emp_id != null">
+				employee_id like '%' || #{emp_id} || '%'
 			</if>
-			<if test="userName != null">
-				and user_name like '%' || #{userName} ||
+			<if test="emp_name != null">
+				and user_name like '%' || #{emp_name} ||
 				'%'
 			</if>
 		</where>
 	</select>
 
-	<!-- ユーザー1件検索 -->
+<!-- 	<!-- ユーザー1件検索 -->
 	<select id="findOne" resultMap="user">
 		select
-		m_user.employee_id
+		employee_id
 		,
-		m_user.password
-		, m_user.user_name
-		, m_user.birthday
-		, m_user.age
+		employee_password
+		, employees.user_name
+		, employees.emp_join_date
 		,
-		m_user.gender
+		employees.age
+		,
+		employees.gender
 		, m_department.department_id
 		,
 		m_department.department_name
-		, t_salary.employee_id as salary_employee_id
+		, t_salary.employee_id as
+		salary_employee_id
 		,
 		t_salary.year_month as salary_year_month
-		, t_salary.salary as
+		,
+		t_salary.salary as
 		salary_salary
-		from m_user
+		from employees
 		left join
-		m_department on m_user.department_id
+		m_department on
+		employees.department_id
 		= m_department.department_id
 		left join
-		t_salary on m_user.employee_id =
+		t_salary
+		on employee_id =
 		t_salary.employee_id
 		where
-		m_user.employee_id = #{userId}
+		employee_id = #{emp_id}
 	</select>
 
 
-	<!-- ユーザー1件更新 -->
+	ユーザー1件更新
 	<update id="updateOne">
-		update m_user
+		update employees
 		set
-		password = #{password}
+		emp_password = #{emp_password}
 		,user_name =
-		#{userName}
+		#{emp_name}
 		where
-		employee_id = #{userId}
+		employee_id = #{emp_id}
 	</update>
 
-	<!-- ユーザー1件削除 -->
+	ユーザー1件削除
 	<delete id="deleteOne">
 		delete from
-		m_user
+		employees
 		where
-		employee_id = #{userId}
-	</delete>
+		employee_id = #{emp_id}
+	</delete> -->
 </mapper>
