@@ -12,6 +12,7 @@ import com.example.repository.UserMapper;
 
 @Service
 public class UserServiceImpl implements UserService {
+
 	@Autowired
 	private UserMapper mapper;
 

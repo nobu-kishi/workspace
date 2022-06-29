@@ -56,8 +56,7 @@
 		, #{birthday}
 		, #{age}
 		, #{gender}
-		,
-		#{departmentId}
+		, #{departmentId}
 		, #{role}
 		)
 	</insert>
@@ -113,8 +112,7 @@
 		update m_user
 		set
 		password = #{password}
-		,user_name =
-		#{userName}
+		,user_name = #{userName}
 		where
 		user_id = #{userId}
 	</update>

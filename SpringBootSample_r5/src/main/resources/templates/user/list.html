@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layout}">
 <head>
-<title>ユーザー⼀覧</title>
+<title>ユーザー一覧</title>
 <!-- 個別CSS読込 -->
 <link rel="stylesheet" th:href="@{/css/user/list.css}">
 </head>
@@ -14,7 +14,7 @@
 		</div>
 		<!-- 検索 -->
 		<div class="mb-4">
-			<form id="user-search-form" method="post" th:a ction="@{/user/list}"
+			<form id="user-search-form" method="post" th:action="@{/user/list}"
 				class="form-inline" th:object="${userListForm}">
 				<div class="form-group">
 					<label for="userId" class="mr-2">ユーザーID </label> <input type="text"

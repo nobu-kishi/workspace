@@ -1,5 +1,8 @@
 package com.example.domain.user.service.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,38 +22,33 @@ public class EmployeesServiceImpl implements EmployeesService {
 		mapper.insertOne(employees);
 	}
 
-
 	//TODO
 	/** ユーザー取得 */
-	/*
 	@Override
-	public List<Employees> getUsers(Employees employee) {
-	return mapper.findMany(employee);
+	public List<Employees> getEmployees(Employees employees) {
+		return mapper.findMany(employees);
 	}
 
-	*//** ユーザー取得(1件) */
-	/*
+	/** ユーザー取得(1件) */
 	@Override
-	public Employees getUserOne(String employeeId) {
-	return mapper.findOne(employeeId);
+	public Employees getfindOne(Integer employeeId) {
+		return mapper.findOne(employeeId);
 	}
 
-	*//** ユーザー更新(1件) */
-	/*
-	@Transactional
+	/** ユーザー更新(1件) */
 	@Override
-	public void updateUserOne(String employeeId,
-	String emp_password,
-	String employeeName) {
-	mapper.updateOne(employeeId, emp_password, employeeName);
-
-	// 例外を発生させる
-	int i = 1 / 0;
+	public void updateOne(Integer employeeId,
+			String employeePassword,
+			String employeeName,
+			String employeePhone,
+			String employeeEmail,
+			Date employeeJoinDate) {
+		mapper.updateOne(employeeId, employeePassword, employeeName, employeePhone, employeeEmail, employeeJoinDate);
 	}
 
-	*//** ユーザー削除(1件) *//*
-						@Override
-						public void deleteUserOne(String employeeId) {
-						int count = mapper.deleteOne(employeeId);
-						}*/
+	/** ユーザー削除(1件) */
+	@Override
+	public void deleteOne(Integer employeeId) {
+		int count = mapper.deleteOne(employeeId);
+	}
 }

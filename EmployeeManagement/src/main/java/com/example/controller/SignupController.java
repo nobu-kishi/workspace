@@ -35,7 +35,6 @@ public class SignupController {
 	@GetMapping("/signup")
 	public String getSignup(Model model, Locale locale,
 			@ModelAttribute SignupForm form) {
-		System.out.println("登録画面GET");
 		return "employee/signup";
 	}
 
@@ -45,14 +44,14 @@ public class SignupController {
 			@ModelAttribute @Validated(GroupOrder.class) SignupForm form,
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			// NG:ユーザー登録画面に戻ります
+			System.out.println(1);
 			return getSignup(model, locale, form);
 		}
 		log.info(form.toString());
 
-		// formをMUserクラスに変換
+		// Emploeesに型変換して登録
 		Employees employees = modelMapper.map(form, Employees.class);
-		// ユーザー登録
+		System.out.println(2);
 		EmployeesService.signup(employees);
 		return "redirect:/login";
 	}

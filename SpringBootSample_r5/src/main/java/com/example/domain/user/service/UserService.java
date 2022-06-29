@@ -16,9 +16,7 @@ public interface UserService {
 	public MUser getUserOne(String userId);
 
 	/** ユーザー更新(1件) */
-	public void updateUserOne(String userId,
-			String password,
-			String userName);
+	public void updateUserOne(String userId, String password, String userName);
 
 	/** ユーザー削除(1件) */
 	public void deleteUserOne(String userId);

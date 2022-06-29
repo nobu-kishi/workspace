@@ -17,16 +17,16 @@
 	<div class="text-center">
 		<form method="post" th:action="@{/login}" class="form-login">
 			<h2>ログイン</h2>
-			<!-- ユーザーID -->
+			<!-- 社員番号 -->
 			<div class="form-group">
-				<label for="emp_id" class="sr-only">emp_id</label> <input
-					type="text" class="form-control" placeholder="社員番号" name="emp_id" />
+				<label for="employeeId" class="sr-only">employeeId</label> <input
+					type="text" class="form-control" placeholder="社員番号" name="employeeId" />
 			</div>
 			<!-- パスワード -->
 			<div class="form-group">
-				<label for="emp_password" class="sr-only">emp_password</label> <input
+				<label for="employeePassword" class="sr-only">employeePassword</label> <input
 					type="text" class="form-control" placeholder="パスワード"
-					name="emp_password" />
+					name="employeePassword" />
 			</div>
 			<input type="submit" value="ログイン" class="btn btn-primary" />
 		</form>

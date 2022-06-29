@@ -30,10 +30,11 @@ public class UserListController {
 		// formをMUserクラスに変換
 		MUser user = modelMapper.map(form, MUser.class);
 		// ユーザー検索
-		List<MUser> userList = userService.getUsers(
-				user);
+		List<MUser> userList = userService.getUsers(user);
+		System.out.println(user);
 		// Modelに登録
 		model.addAttribute("userList", userList);
+		System.out.println(userList);
 		// ユーザー一覧画面を表示
 		return "user/list";
 	}

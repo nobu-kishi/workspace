@@ -4,18 +4,16 @@
 <!-- Mapperとxmlのマッピング -->
 <mapper namespace="com.example.repository.EmployeeMapper">
 	<!-- マッピング定義(ユーザー) -->
-		<!-- TODO:resultTypeをSQL毎に変える -->
+	<!-- TODO:resultTypeをSQL毎に変える -->
 	<resultMap type="com.example.domain.user.model.Employees"
-		id="employees">
-		<id column="employee_id" property="emp_id" />
-		<result column="employee_password" property="emp_password" />
-		<result column="employee_name" property="emp_name" />
-		<result column="employee_phone;" property="emp_phone;" />
-		<result column="employee_email" property="emp_email" />
-		<result column="employee_join_date" property="emp_join_date" />
+		id="Employees">
+		<id column="employee_id" property="employeeId" />
+		<result column="employee_password" property="employeePassword" />
+		<result column="employee_name" property="employeeName" />
+		<result column="employee_phone;" property="employeePhone;" />
+		<result column="employee_email" property="employeeEmail" />
+		<result column="employee_join_date" property="employeeJoinDate" />
 	</resultMap>
-
-
 
 	<!-- ユーザー1件登録 -->
 	<insert id="insertOne">
@@ -23,87 +21,64 @@
 		employee_id
 		,employee_password
 		,employee_name
-		,employee_email
 		,employee_phone
+		,employee_email
 		,employee_join_date
 		)
 		values (
-		,#{emp_id}
-		,#{emp_password}
-		,#{emp_name}
-		,#{emp_phone}
-		,#{emp_email}
-		,#{emp_join_date}
-		)
+		#{employeeId}
+		,#{employeePassword}
+		,#{employeeName}
+		,#{employeePhone}
+		,#{employeeEmail}
+		,#{employeeJoinDate}
+		);
 	</insert>
 
 	<!-- ユーザー複数件取得 -->
-	<select id="findMany" resultType="MUser">
+	<select id="findMany" resultType="Employees">
 		select *
 		from employees
 		<where>
-			<if test="emp_id != null">
-				employee_id like '%' || #{emp_id} || '%'
+			<if test="employeeId != null">
+				employee_id like CONCAT('%', #{employeeId}, '%')
 			</if>
-			<if test="emp_name != null">
-				and user_name like '%' || #{emp_name} ||
-				'%'
+			<if test="employeeName != null">
+				employee_name like CONCAT('%', #{employeeName}, '%')
 			</if>
 		</where>
 	</select>
 
-<!-- 	<!-- ユーザー1件検索 -->
-	<select id="findOne" resultMap="user">
-		select
-		employee_id
-		,
-		employee_password
-		, employees.user_name
-		, employees.emp_join_date
-		,
-		employees.age
-		,
-		employees.gender
-		, m_department.department_id
-		,
-		m_department.department_name
-		, t_salary.employee_id as
-		salary_employee_id
-		,
-		t_salary.year_month as salary_year_month
-		,
-		t_salary.salary as
-		salary_salary
+	<!-- ユーザー1件検索 -->
+	<select id="findOne" resultMap="Employees">
+		select *
+	<!-- 	employee_id
+		,employee_password
+		,employee_name
+		,employee_phone
+		,employee_email
+		,employees_employeeJoinDate -->
 		from employees
-		left join
-		m_department on
-		employees.department_id
-		= m_department.department_id
-		left join
-		t_salary
-		on employee_id =
-		t_salary.employee_id
 		where
-		employee_id = #{emp_id}
+		employee_id = #{employeeId}
 	</select>
 
-
-	ユーザー1件更新
+	<!-- ユーザー1件更新 -->
 	<update id="updateOne">
 		update employees
 		set
-		emp_password = #{emp_password}
-		,user_name =
-		#{emp_name}
+		employee_password = #{employeePassword}
+		,employee_name = #{employeeName}
+		,employee_phone = #{employeePhone}
+		,employee_email = #{employeeEmail}
+		,employeeJoinDate = #{employeeJoinDate}
 		where
-		employee_id = #{emp_id}
+		employee_id =#{employeeId}
 	</update>
 
-	ユーザー1件削除
+	<!-- ユーザー1件削除 -->
 	<delete id="deleteOne">
-		delete from
-		employees
-		where
-		employee_id = #{emp_id}
-	</delete> -->
+		delete from employees
+		where employee_id = #{employeeId}
+	</delete>
 </mapper>
