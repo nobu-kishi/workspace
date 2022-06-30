@@ -7,7 +7,7 @@
 <!-- 個別CSS読込 -->
 <link rel="stylesheet" th:href="@{/css/employee/list.css}">
 </head>
-<body>
+<body class="bg-light">
 	<div layout:fragment="content">
 		<div class="header border-bottom">
 			<h1 class="h2">社員一覧画面</h1>
@@ -27,7 +27,15 @@
 					<label for="employeeName" class="mr-2">氏名</label> <input
 						type="text" class="form-control" th:field="*{employeeName}" />
 				</div>
-				<button class="btn btn-primary" type="submit">検索</button>
+				<div class="form-group mx-sm-3">
+					<label for="employeeEmail" class="mr-2">Eメール</label> <input
+						type="text" class="form-control" th:field="*{employeeEmail}" />
+				</div>
+				<!-- <div class="form-group mx-sm-3">
+					<label for="employeeJoinDate" class="mr-2">入社日</label> <input
+						type="text" class="form-control" th:field="*{employeeJoinDate}" />
+				</div> -->
+				<button class="btn btn-primary" type="submit" name="serch">検索</button>
 			</form>
 		</div>
 		<!-- 一覧表示 -->
@@ -57,8 +65,13 @@
 						<!-- TODO:更新と削除を追加する -->
 						<td><a class="btn btn-primary"
 							th:href="@{'/employee/edit/' + ${item.employeeId}}"> 編集 </a></td>
-						<td><a class="btn btn-danger"
-							th:href="@{'/employee/edit/' + ${item.employeeId}}"> 削除（工事中） </a></td>
+						<td>
+						<!-- <button class="btn btn-danger" type="submit" name="delete">削除</button> -->
+					<!-- 仮置き  -->
+						<a class="btn btn-danger"
+							th:href="@{'/employee/delete/' + ${item.employeeId}}"> 削除</a></td>
+
+
 						<!-- <td><button
 								onclick="location.href='http://localhost:8080/employee/signup'">ボタン</button></td> -->
 

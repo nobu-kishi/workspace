@@ -13,7 +13,7 @@ public interface EmployeeMapper {
 	/** ユーザー登録 */
 	public int insertOne(Employees employees);
 
-	/** ユーザー取得 */
+	/** ユーザー複数取得 */
 	public List<Employees> findMany(Employees employees);
 
 	/** ユーザー取得(1件) */

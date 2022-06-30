@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,7 +36,7 @@ public class EmployeesListController {
 	}
 
 	/* 社員検索 */
-	@PostMapping(value = "/list"/*, params = "serch"*/)
+	@PostMapping(value = "/list")
 	public String postEmployeesList(@ModelAttribute EmployeesListForm form, Model model) {
 		Employees employees = modelMapper.map(form, Employees.class);
 		List<Employees> employeesList = employeesService.getEmployees(employees);
@@ -44,17 +45,10 @@ public class EmployeesListController {
 		return "employee/list";
 	}
 
-	/*ページ遷移*/
-	/*	@PostMapping(value="",params="")
-		public String getEmployees(EmployeesEditForm form, Model model,
-				@PathVariable("employeeId") Integer employeeId) {
-
-			return "redirect:/employee/list";
-		}*/
-
 	/** ユーザー削除処理 */
-	@PostMapping(value = "/list", params = "delete")
-	public String deleteEmployees(EmployeesEditForm form, Model model) {
+	@GetMapping(value = "/delete/{employeeId:.+}")
+	public String deleteEmployees(EmployeesEditForm form, Model model,
+			@PathVariable("employeeId") Integer employeeId) {
 		employeesService.deleteOne(form.getEmployeeId());
 		return "redirect:/employee/list";
 	}

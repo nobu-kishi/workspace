@@ -44,8 +44,14 @@
 				employee_id like CONCAT('%', #{employeeId}, '%')
 			</if>
 			<if test="employeeName != null">
-				employee_name like CONCAT('%', #{employeeName}, '%')
+				and employee_name like CONCAT('%', #{employeeName}, '%')
 			</if>
+			<if test="employeeEmail != null">
+				and employee_email like CONCAT('%', #{employeeEmail}, '%')
+			</if>
+			<!-- <if test="employeeJoinDate != null">
+				employee_join_date like CONCAT('%', #{employeeJoinDate}, '%')
+			</if> -->
 		</where>
 	</select>
 

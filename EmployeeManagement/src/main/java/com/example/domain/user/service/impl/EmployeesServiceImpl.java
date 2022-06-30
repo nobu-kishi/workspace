@@ -22,7 +22,7 @@ public class EmployeesServiceImpl implements EmployeesService {
 	}
 
 	//TODO
-	/** ユーザー取得 */
+	/** ユーザー複数取得 */
 	@Override
 	public List<Employees> getEmployees(Employees employees) {
 		return mapper.findMany(employees);

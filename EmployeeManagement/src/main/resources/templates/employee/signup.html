@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layout}">
-
 <head>
 <title th:text="#{emp_signup_title}"></title>
 <!-- 個別CSS読込 -->
@@ -12,11 +11,11 @@
 <body class="bg-light">
 	<div layout:fragment="content">
 		<form id="signup-form" method="post" action="/employee/signup"
-			class="form-signup" th:object="${signupForm}">
+			class="form-signup" th:object="${employeesSignupForm}">
 			<!-- パスワード -->
 			<div class="form-group">
 				<label for="employeePassword" th:text="#{employeePassword}"></label>
-				<input type="text" class="form-control"
+				<input type="text" class="form-control" placeholder="abc1234"
 					th:field="*{employeePassword}" th:errorclass="is-invalid" />
 				<div class="invalid-feedback" th:errors="*{employeePassword}"></div>
 			</div>
@@ -29,8 +28,8 @@
 			</div>
 			<!-- 電話番号 -->
 			<label for="employeePhone" th:text="#{employeePhone}"></label> <input
-				type="text" class="form-control" th:field="*{employeePhone}"
-				th:errorclass="is-invalid" />
+				type="text" class="form-control" placeholder="080-1111-2222"
+				th:field="*{employeePhone}" th:errorclass="is-invalid" />
 			<div class="invalid-feedback" th:errors="*{employeePhone}"></div>
 			<!-- Eメール -->
 			<label for="employeeEmail" th:text="#{employeeEmail}"></label> <input
@@ -45,8 +44,10 @@
 				<div class="invalid-feedback" th:errors="*{employeeJoinDate}"></div>
 			</div>
 			<!-- 登録ボタン -->
-			<input type="submit" th:value="#{emp_signup_btn}"
-				class="btn btn-primary" />
+			<div class="text-center" >
+				<input type="submit" th:value="#{emp_signup_btn}"
+					class="btn btn-primary" />
+			</div>
 		</form>
 	</div>
 </body>
