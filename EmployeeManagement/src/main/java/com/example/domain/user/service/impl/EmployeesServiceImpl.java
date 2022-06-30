@@ -1,6 +1,5 @@
 package com.example.domain.user.service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +40,10 @@ public class EmployeesServiceImpl implements EmployeesService {
 			String employeePassword,
 			String employeeName,
 			String employeePhone,
-			String employeeEmail,
-			Date employeeJoinDate) {
-		mapper.updateOne(employeeId, employeePassword, employeeName, employeePhone, employeeEmail, employeeJoinDate);
+			String employeeEmail
+			/*Date employeeJoinDate*/) {
+		mapper.updateOne(employeeId, employeePassword, employeeName, employeePhone,
+				employeeEmail/*, employeeJoinDate*/);
 	}
 
 	/** ユーザー削除(1件) */

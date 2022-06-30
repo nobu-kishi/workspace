@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.user.model.Employees;
 import com.example.domain.user.service.EmployeesService;
+import com.example.form.EmployeesEditForm;
 import com.example.form.EmployeesListForm;
 
 @Controller
@@ -34,7 +35,7 @@ public class EmployeesListController {
 	}
 
 	/* 社員検索 */
-	@PostMapping("/list")
+	@PostMapping(value = "/list"/*, params = "serch"*/)
 	public String postEmployeesList(@ModelAttribute EmployeesListForm form, Model model) {
 		Employees employees = modelMapper.map(form, Employees.class);
 		List<Employees> employeesList = employeesService.getEmployees(employees);
@@ -43,23 +44,18 @@ public class EmployeesListController {
 		return "employee/list";
 	}
 
-	/*	*//** ユーザー更新処理 */
-	/*
-	@PostMapping(value = "/detail", params = "update")
-	public String updateEmployees(EmployeesListForm form, Model model) {
-	try {
-	employeesService.updateEmployeesOne(form.getPassword(),
-	form.getEmployeesName());
-	} catch (Exception e) {
-	log.error("ユーザー更新でエラー", e);
-	}
-	return "redirect:/employee/List";
-	}
+	/*ページ遷移*/
+	/*	@PostMapping(value="",params="")
+		public String getEmployees(EmployeesEditForm form, Model model,
+				@PathVariable("employeeId") Integer employeeId) {
 
-	*//** ユーザー削除処理 *//*
-						@PostMapping(value = "/detail", params = "delete")
-						public String deleteEmployees(EmployeesListForm form, Model model) {
-						employeesService.deleteEmployeesOne(form.getEmployeesId());
-						return "redirect:/employee/List";
-						}*/
+			return "redirect:/employee/list";
+		}*/
+
+	/** ユーザー削除処理 */
+	@PostMapping(value = "/list", params = "delete")
+	public String deleteEmployees(EmployeesEditForm form, Model model) {
+		employeesService.deleteOne(form.getEmployeeId());
+		return "redirect:/employee/list";
+	}
 }

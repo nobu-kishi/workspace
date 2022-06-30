@@ -51,7 +51,6 @@ public class SignupController {
 
 		// Emploeesに型変換して登録
 		Employees employees = modelMapper.map(form, Employees.class);
-		System.out.println(2);
 		EmployeesService.signup(employees);
 		return "redirect:/login";
 	}

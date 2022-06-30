@@ -1,6 +1,5 @@
 package com.example.domain.user.service;
 
-import java.util.Date;
 import java.util.List;
 
 import com.example.domain.user.model.Employees;
@@ -22,8 +21,8 @@ public interface EmployeesService {
 			String employeePassword,
 			String employeeName,
 			String employeePhone,
-			String employeeEmail,
-			Date employeeJoinDate);
+			String employeeEmail
+			/*Date employeeJoinDate*/);
 
 	/** ユーザー削除(1件) */
 	public void deleteOne(Integer employeeId);

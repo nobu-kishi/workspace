@@ -14,8 +14,6 @@ import lombok.Data;
 @Data
 public class SignupForm {
 
-	//TODO:画面上に自動採番した値を出したい
-	/*@NotNull(groups = ValidGroup1.class)*/
 	private Integer employeeId;
 
 	@NotBlank(groups = ValidGroup1.class)
@@ -29,6 +27,7 @@ public class SignupForm {
 	@NotBlank(groups = ValidGroup1.class)
 	private String employeePhone;
 
+	@NotBlank(groups = ValidGroup1.class)
 	@Email(groups = ValidGroup2.class)
 	private String employeeEmail;
 

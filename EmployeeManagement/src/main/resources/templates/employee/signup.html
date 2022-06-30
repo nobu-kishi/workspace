@@ -1,61 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
 <head>
-<meta charset="UTF-8"></meta>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- CSS読込 -->
-<link rel="stylesheet"
-	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-<link rel="stylesheet" th:href="@{/css/employee/signup.css}">
-<!-- JS読込 -->
-<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
 <title th:text="#{emp_signup_title}"></title>
+<!-- 個別CSS読込 -->
+<link rel="stylesheet" th:href="@{/css/employee/signup.css}">
 </head>
+
 <body class="bg-light">
-	<form id="signup-form" method="post" action="/employee/signup"
-		class="form-signup" th:object="${signupForm}">
-		<h1 class="text-center" th:text="#{emp_signup_title}"></h1>
-	<!-- TODO:自動採番したい -->
-		<!-- 社員番号 -->
-		<div class="form-group">
-			<label for="employeeId" th:text="#{employeeId}"></label> <input type="text"
-				class="form-control" th:field="*{employeeId}" th:errorclass="is-invalid" />
-			<div class="invalid-feedback" th:errors="*{employeeId}"></div>
-		</div>
-		<!-- パスワード -->
-		<div class="form-group">
-			<label for="employeePassword" th:text="#{employeePassword}"></label> <input
-				type="text" class="form-control" th:field="*{employeePassword}"
+	<div layout:fragment="content">
+		<form id="signup-form" method="post" action="/employee/signup"
+			class="form-signup" th:object="${signupForm}">
+			<!-- パスワード -->
+			<div class="form-group">
+				<label for="employeePassword" th:text="#{employeePassword}"></label>
+				<input type="text" class="form-control"
+					th:field="*{employeePassword}" th:errorclass="is-invalid" />
+				<div class="invalid-feedback" th:errors="*{employeePassword}"></div>
+			</div>
+			<!-- ユーザー名 -->
+			<div class="form-group">
+				<label for="employeeName" th:text="#{employeeName}"></label> <input
+					type="text" class="form-control" th:field="*{employeeName}"
+					th:errorclass="is-invalid" />
+				<div class="invalid-feedback" th:errors="*{employeeName}"></div>
+			</div>
+			<!-- 電話番号 -->
+			<label for="employeePhone" th:text="#{employeePhone}"></label> <input
+				type="text" class="form-control" th:field="*{employeePhone}"
 				th:errorclass="is-invalid" />
-			<div class="invalid-feedback" th:errors="*{employeePassword}"></div>
-		</div>
-		<!-- ユーザー名 -->
-		<div class="form-group">
-			<label for="employeeName" th:text="#{employeeName}"></label> <input
-				type="text" class="form-control" th:field="*{employeeName}"
+			<div class="invalid-feedback" th:errors="*{employeePhone}"></div>
+			<!-- Eメール -->
+			<label for="employeeEmail" th:text="#{employeeEmail}"></label> <input
+				type="text" class="form-control" th:field="*{employeeEmail}"
 				th:errorclass="is-invalid" />
-			<div class="invalid-feedback" th:errors="*{employeeName}"></div>
-		</div>
-		<!-- 電話番号 -->
-		<label for="employeePhone" th:text="#{employeePhone}"></label> <input type="text"
-			class="form-control" th:field="*{employeePhone}" th:errorclass="is-invalid" />
-		<div class="invalid-feedback" th:errors="*{employeePhone}"></div>
-		<!-- Eメール -->
-		<label for="employeeEmail" th:text="#{employeeEmail}"></label> <input type="text"
-			class="form-control" th:field="*{employeeEmail}" th:errorclass="is-invalid" />
-		<div class="invalid-feedback" th:errors="*{employeeEmail}"></div>
-		<!-- 入社年月日 -->
-		<div class="form-group">
-			<label for="employeeJoinDate" th:text="#{employeeJoinDate}"></label> <input
-				type="text" class="form-control" placeholder="yyyy/MM/dd"
-				th:field="*{employeeJoinDate}" th:errorclass="is-invalid" />
-			<div class="invalid-feedback" th:errors="*{employeeJoinDate}"></div>
-		</div>
-		<!-- 登録ボタン -->
-		<input type="submit" th:value="#{emp_signup_btn}"
-			class="btn btn-primary w-100 mt-3" />
-	</form>
+			<div class="invalid-feedback" th:errors="*{employeeEmail}"></div>
+			<!-- 入社年月日 -->
+			<div class="form-group">
+				<label for="employeeJoinDate" th:text="#{employeeJoinDate}"></label>
+				<input type="text" class="form-control" placeholder="yyyy/MM/dd"
+					th:field="*{employeeJoinDate}" th:errorclass="is-invalid" />
+				<div class="invalid-feedback" th:errors="*{employeeJoinDate}"></div>
+			</div>
+			<!-- 登録ボタン -->
+			<input type="submit" th:value="#{emp_signup_btn}"
+				class="btn btn-primary" />
+		</form>
+	</div>
 </body>
 </html>

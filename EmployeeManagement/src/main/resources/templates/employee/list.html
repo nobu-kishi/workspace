@@ -11,18 +11,21 @@
 	<div layout:fragment="content">
 		<div class="header border-bottom">
 			<h1 class="h2">社員一覧画面</h1>
+
 		</div>
+		<!-- <a class="btn btn-primary" href="/employee/signup">社員登録はこちら</a> -->
 		<!-- 検索 -->
 		<div class="mb-4">
-			<form id="user-search-form" method="post" th:action="@{/employee/list}"
-				class="form-inline" th:object="${employeesListForm}">
+			<form id="user-search-form" method="post"
+				th:action="@{/employee/list}" class="form-inline"
+				th:object="${employeesListForm}">
 				<div class="form-group">
-					<label for="employeeId" class="mr-2">社員番号</label>
-					<input type="text" class="form-control" th:field="*{employeeId}" />
+					<label for="employeeId" class="mr-2">社員番号</label> <input
+						type="text" class="form-control" th:field="*{employeeId}" />
 				</div>
 				<div class="form-group mx-sm-3">
-					<label for="employeeName" class="mr-2">氏名</label>
-					<input type="text" class="form-control" th:field="*{employeeName}" />
+					<label for="employeeName" class="mr-2">氏名</label> <input
+						type="text" class="form-control" th:field="*{employeeName}" />
 				</div>
 				<button class="btn btn-primary" type="submit">検索</button>
 			</form>
@@ -39,6 +42,7 @@
 						<th class="th-width">Eメール</th>
 						<th class="th-width">入社日</th>
 						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,15 +52,24 @@
 						<td th:text="${item.employeeName}"></td>
 						<td th:text="${item.employeePhone}"></td>
 						<td th:text="${item.employeeEmail}"></td>
-						<td th:text="${#dates.format(item.employeeJoinDate, 'YYYY/MM/dd')}"></td>
-					<!-- TODO:更新と削除を追加する -->
+						<td
+							th:text="${#dates.format(item.employeeJoinDate, 'YYYY/MM/dd')}"></td>
+						<!-- TODO:更新と削除を追加する -->
 						<td><a class="btn btn-primary"
 							th:href="@{'/employee/edit/' + ${item.employeeId}}"> 編集 </a></td>
-						<td><a class="btn btn-primary"
-							th:href="@{'/employee/edit/' + ${item.employeeId}}"> 削除 </a></td>
+						<td><a class="btn btn-danger"
+							th:href="@{'/employee/edit/' + ${item.employeeId}}"> 削除（工事中） </a></td>
+						<!-- <td><button
+								onclick="location.href='http://localhost:8080/employee/signup'">ボタン</button></td> -->
+
+						<!-- <td><button type="button" class="btn btn-primary"
+							onclick="location.href=@{'/employee/edit/' + ${item.employeeId}}">編集</button></td>
+						<td><button class="btn btn-primary"
+							th:href="@{'/employee/edit/' + ${item.employeeId}}"> 削除 </button></td>
+
 
 						<!-- <td><button class="btn btn-danger" type="submit" name="delete">削除</button></td>
-						<td><button class="btn btn-primary" type="submit" name="update">更新</button></td> -->
+						<td><button class="btn btn-primary" type="submit" name="edit">編集</button></td> -->
 					</tr>
 				</tbody>
 			</table>

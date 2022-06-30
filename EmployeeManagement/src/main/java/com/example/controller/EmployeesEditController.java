@@ -48,15 +48,16 @@ public class EmployeesEditController {
 					form.getEmployeePassword(),
 					form.getEmployeeName(),
 					form.getEmployeePhone(),
-					form.getEmployeeEmail(),
-					form.getEmployeeJoinDate());
+					form.getEmployeeEmail()
+			/*form.getEmployeeJoinDate()*/
+			);
 		} catch (Exception e) {
 			log.error("社員情報更新でエラー", e);
 		}
 		return "redirect:/employee/list";
 	}
 
-	/** ユーザー削除処理 */
+	/*	*//** ユーザー削除処理 */
 	@PostMapping(value = "/edit", params = "delete")
 	public String deleteEmployees(EmployeesEditForm form, Model model) {
 		employeesService.deleteOne(form.getEmployeeId());

@@ -18,16 +18,16 @@
 	<!-- ユーザー1件登録 -->
 	<insert id="insertOne">
 		insert into employees(
-		employee_id
-		,employee_password
+		<!-- employee_id -->
+		employee_password
 		,employee_name
 		,employee_phone
 		,employee_email
 		,employee_join_date
 		)
 		values (
-		#{employeeId}
-		,#{employeePassword}
+		<!-- #{employeeId} -->
+		#{employeePassword}
 		,#{employeeName}
 		,#{employeePhone}
 		,#{employeeEmail}
@@ -71,7 +71,7 @@
 		,employee_name = #{employeeName}
 		,employee_phone = #{employeePhone}
 		,employee_email = #{employeeEmail}
-		,employeeJoinDate = #{employeeJoinDate}
+		<!-- ,employeeJoinDate = #{employeeJoinDate} -->
 		where
 		employee_id =#{employeeId}
 	</update>

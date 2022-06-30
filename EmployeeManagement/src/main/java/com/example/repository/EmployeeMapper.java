@@ -1,6 +1,5 @@
 package com.example.repository;
 
-import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -20,14 +19,13 @@ public interface EmployeeMapper {
 	/** ユーザー取得(1件) */
 	public Employees findOne(Integer employeeId);
 
-	//TODO:DATE型でうまくいかなければ、Stringにする
 	/** ユーザー更新(1件) */
 	public void updateOne(@Param("employeeId" ) Integer employeeId,
 			@Param("employeePassword") String employeePassword,
 			@Param("employeeName") String employeeName,
 			@Param("employeePhone") String employeePhone,
-			@Param("employeeEmail") String employeeEmail,
-			@Param("employeeJoinDate") Date employeeJoinDate);
+			@Param("employeeEmail") String employeeEmail
+	/*@Param("employeeJoinDate") Date employeeJoinDate*/);
 
 	/** ユーザー削除(1件) */
 	public int deleteOne(@Param("employeeId") Integer employeeId);
