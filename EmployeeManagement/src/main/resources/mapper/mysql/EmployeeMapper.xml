@@ -13,7 +13,22 @@
 		<result column="employee_phone;" property="employeePhone;" />
 		<result column="employee_email" property="employeeEmail" />
 		<result column="employee_join_date" property="employeeJoinDate" />
+		<result column="department_id" property="departmentId" />
+		<collection property="departmentsList" resultMap="departments" />
 	</resultMap>
+
+	<!-- マッピング定義(部署) -->
+	<resultMap type="com.example.domain.user.model.Departments"
+		id="departments">
+		<id column="department_id" property="departmentId" />
+		<result column="department_area" property="departmentArea" />
+		<result column="department_sales" property="departmentSales" />
+		<result column="department_customer" property="departmentCustomer" />
+		<result column="department_update_time" property="departmentUpdateTime" />
+	</resultMap>
+
+
+
 
 	<!-- ユーザー1件登録 -->
 	<insert id="insertOne">

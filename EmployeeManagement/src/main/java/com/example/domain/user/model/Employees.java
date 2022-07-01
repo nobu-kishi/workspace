@@ -2,6 +2,7 @@ package com.example.domain.user.model;
 
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -13,4 +14,5 @@ public class Employees {
 	private String employeePhone;
 	private String employeeEmail;
 	private Date employeeJoinDate;
+	private List<Departments> departmenstList;
 }
