@@ -3,7 +3,7 @@ package com.example.form;
 import java.util.Date;
 import java.util.List;
 
-import com.example.domain.user.model.Departments;
+import com.example.domain.user.model.Department;
 
 import lombok.Data;
 
@@ -15,5 +15,5 @@ public class EmployeesListForm {
 	private String employeePhone;
 	private String employeeEmail;
 	private Date employeeJoinDate;
-	private List<Departments> departmenstList;
+	private List<Department> departmenstList;
 }

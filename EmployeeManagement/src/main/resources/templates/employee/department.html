@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+<title>社員一覧</title>
+<!-- 個別CSS読込 -->
+<link rel="stylesheet" th:href="@{/css/employee/department.css}">
+</head>
+<body class="bg-light">
+	<div layout:fragment="content">
+		<div class="header border-bottom">
+			<h1 class="h2">部門一覧画面</h1>
+		</div>
+		<!-- 一覧表示 -->
+		<div>
+			<table class="table table-striped table-bordered table-hover">
+				<thead class="thead-light">
+					<tr>
+						<th class="th-width">課番号</th>
+						<th class="th-width">課名</th>
+						<th class="th-width">売上合計</th>
+						<th class="th-width">合計人数</th>
+						<th class="th-width">1人あたりの売上平均</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item: *{departmentList}">
+						<td th:text="${item.departmentId}"></td>
+						<!-- <td th:text="${item.departmentArea}"></td> -->
+						<td th:text="${item.profitCount}"></td>
+						<td th:text="${item.customerCount}"></td>
+						<td th:text="${item.profitAvg}"></td>
+						<td><a class="btn btn-primary"
+							th:href="@{'/department/' + ${item.departmentId}}">一覧</a></td>
+						<td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

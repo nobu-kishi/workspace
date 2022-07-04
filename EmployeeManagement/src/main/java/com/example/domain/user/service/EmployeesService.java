@@ -26,4 +26,7 @@ public interface EmployeesService {
 
 	/** ユーザー削除(1件) */
 	public void deleteOne(Integer employeeId);
+
+	/* 部門別集計 */
+	public List<Employees> salesCount(Employees employees) ;
 }

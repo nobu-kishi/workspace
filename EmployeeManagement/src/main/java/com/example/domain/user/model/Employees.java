@@ -14,5 +14,6 @@ public class Employees {
 	private String employeePhone;
 	private String employeeEmail;
 	private Date employeeJoinDate;
-	private List<Departments> departmenstList;
+	private Integer departmentId;
+	private List<Sales> salesList;
 }

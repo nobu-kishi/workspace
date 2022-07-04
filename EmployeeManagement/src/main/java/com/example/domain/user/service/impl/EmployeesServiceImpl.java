@@ -41,7 +41,7 @@ public class EmployeesServiceImpl implements EmployeesService {
 			String employeeName,
 			String employeePhone,
 			String employeeEmail
-			/*Date employeeJoinDate*/) {
+	/*Date employeeJoinDate*/) {
 		mapper.updateOne(employeeId, employeePassword, employeeName, employeePhone,
 				employeeEmail/*, employeeJoinDate*/);
 	}
@@ -50,5 +50,12 @@ public class EmployeesServiceImpl implements EmployeesService {
 	@Override
 	public void deleteOne(Integer employeeId) {
 		int count = mapper.deleteOne(employeeId);
+	}
+
+
+	/* 部門別集計 */
+	@Override
+	public List<Employees> salesCount(Employees employees) {
+		return mapper.salesCount(employees);
 	}
 }

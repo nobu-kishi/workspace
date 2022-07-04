@@ -14,21 +14,29 @@
 		<result column="employee_email" property="employeeEmail" />
 		<result column="employee_join_date" property="employeeJoinDate" />
 		<result column="department_id" property="departmentId" />
-		<collection property="departmentsList" resultMap="departments" />
+		<association property="department" resultMap="department" />
+		<collection property="salesList" resultMap="sales"
+			columnPrefix="sales_" />
 	</resultMap>
 
-	<!-- マッピング定義(部署) -->
-	<resultMap type="com.example.domain.user.model.Departments"
-		id="departments">
+	<!-- マッピング定義(部門) -->
+	<resultMap type="com.example.domain.user.model.Department"
+		id="department">
 		<id column="department_id" property="departmentId" />
 		<result column="department_area" property="departmentArea" />
-		<result column="department_sales" property="departmentSales" />
-		<result column="department_customer" property="departmentCustomer" />
-		<result column="department_update_time" property="departmentUpdateTime" />
+
+		<collection property="salesList" resultMap="sales"
+			columnPrefix="sales_" />
 	</resultMap>
 
-
-
+	<!-- マッピング定義(営業成績) -->
+	<resultMap type="com.example.domain.user.model.Sales"
+		id="sales">
+		<id column="employee_id" property="employeeId" />
+		<id column="profit" property="profit" />
+		<id column="customer" property="customer" />
+		<id column="update_time" property="updateTime" />
+	</resultMap>
 
 	<!-- ユーザー1件登録 -->
 	<insert id="insertOne">
@@ -62,23 +70,19 @@
 				and employee_name like CONCAT('%', #{employeeName}, '%')
 			</if>
 			<if test="employeeEmail != null">
-				and employee_email like CONCAT('%', #{employeeEmail}, '%')
+				and employee_email like CONCAT('%', #{employeeEmail},'%')
 			</if>
-			<!-- <if test="employeeJoinDate != null">
-				employee_join_date like CONCAT('%', #{employeeJoinDate}, '%')
-			</if> -->
+			<!-- <if test="employeeJoinDate != null"> employee_join_date like CONCAT('%',
+				#{employeeJoinDate}, '%') </if> -->
 		</where>
 	</select>
 
+	<!-- -->
 	<!-- ユーザー1件検索 -->
 	<select id="findOne" resultMap="Employees">
 		select *
-	<!-- 	employee_id
-		,employee_password
-		,employee_name
-		,employee_phone
-		,employee_email
-		,employees_employeeJoinDate -->
+		<!-- employee_id ,employee_password ,employee_name ,employee_phone ,employee_email
+			,employees_employeeJoinDate -->
 		from employees
 		where
 		employee_id = #{employeeId}
@@ -100,6 +104,28 @@
 	<!-- ユーザー1件削除 -->
 	<delete id="deleteOne">
 		delete from employees
-		where employee_id = #{employeeId}
+		where employee_id =
+		#{employeeId}
 	</delete>
+
+	<!-- 追加課題A -->
+	<!-- 部門一覧取得 -->
+	<select id="salesCount" resultType="String">
+		SELECT
+		departments.department_id
+		, departments.department_area
+		, SUM(sales.profit) AS profit_count
+		, SUM(sales.customer) AS customer_count
+		, FLOOR(AVG(sales.profit)) AS profit_avg
+		FROM
+		departments
+		JOIN
+		employees ON
+		employees.department_id = departments.department_id
+		JOIN
+		sales ON
+		employees.employee_id = sales.employee_id
+		GROUP BY
+		departments.department_area
+	</select>
 </mapper>
