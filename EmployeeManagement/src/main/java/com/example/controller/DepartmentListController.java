@@ -10,38 +10,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.domain.user.model.Employees;
-import com.example.domain.user.service.EmployeesService;
+import com.example.domain.user.model.Department;
+import com.example.domain.user.service.DepartmentService;
 import com.example.form.DepartmentListForm;
 
 @Controller
-@RequestMapping("/employee")
+@RequestMapping("/department")
 public class DepartmentListController {
 
 	@Autowired
-	private EmployeesService employeesService;
+	private DepartmentService departmentService;
 
 	@Autowired
 	private ModelMapper modelMapper;
 
-	@GetMapping("/department")
-	public String getDepartment(@ModelAttribute DepartmentListForm form, Model model) {
-		Employees employees = modelMapper.map(form, Employees.class);
+	@GetMapping /*("/department")*/
+	public String getDepartmentList(@ModelAttribute DepartmentListForm form, Model model) {
 		System.out.println("部署一覧表示");
-		List<Employees> departmentList = employeesService.salesCount(employees);
-		model.addAttribute("departmentList", departmentList);
+		Department department = modelMapper.map(form, Department.class);
+		List<Department> departmentList = departmentService.getDepartments(department);
 		System.out.println(departmentList);
-		return "employee/department";
+		model.addAttribute("departmentList", departmentList);
+		return "department/department";
 	}
-
-	/* 社員検索 */
-	/*	@PostMapping(value = "/list")
-		public String postEmployeesList(@ModelAttribute EmployeesListForm form, Model model) {
-			Employees employees = modelMapper.map(form, Employees.class);
-			List<Employees> employeesList = employeesService.getEmployees(employees);
-			model.addAttribute("employeesList", employeesList);
-			System.out.println("社員検索開始");
-			return "employee/list";
-		}*/
-
 }

@@ -21,7 +21,6 @@ public class EmployeesServiceImpl implements EmployeesService {
 		mapper.insertOne(employees);
 	}
 
-	//TODO
 	/** ユーザー複数取得 */
 	@Override
 	public List<Employees> getEmployees(Employees employees) {
@@ -52,10 +51,15 @@ public class EmployeesServiceImpl implements EmployeesService {
 		int count = mapper.deleteOne(employeeId);
 	}
 
-
 	/* 部門別集計 */
+	/*	@Override
+		public List<Department> getDepartments(Department department) {
+			return mapper.getDepartments(department);
+		}*/
+
+	/** 社員別営業成績一覧 */
 	@Override
-	public List<Employees> salesCount(Employees employees) {
-		return mapper.salesCount(employees);
+	public List<Employees> getDepartmentSector(Integer departmentId) {
+		return mapper.getDepartmentSector(departmentId);
 	}
 }

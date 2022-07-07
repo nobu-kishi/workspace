@@ -36,7 +36,7 @@ public class EmployeesListController {
 	}
 
 	/* 社員検索 */
-	@PostMapping(value = "/list")
+	@PostMapping("/list")
 	public String postEmployeesList(@ModelAttribute EmployeesListForm form, Model model) {
 		Employees employees = modelMapper.map(form, Employees.class);
 		List<Employees> employeesList = employeesService.getEmployees(employees);

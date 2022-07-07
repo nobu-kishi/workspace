@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+<title>社員一覧</title>
+<!-- 個別CSS読込 -->
+<link rel="stylesheet" th:href="@{/css/employee/list.css}">
+</head>
+<body class="bg-light">
+	<div layout:fragment="content">
+		<div class="header border-bottom">
+			<h1 class="h2">社員別一覧画面</h1>
+		</div>
+		<!-- 一覧表示 -->
+		<div>
+			<!-- <form id="user-detail-form" method="post" th:action="@{/user/detail}"
+				class="form-signup" th:object="${userDetailForm}"> -->
+			<table class="table table-striped table-bordered table-hover">
+				<thead class="thead-light">
+					<tr>
+						<th class="th-width">社員番号</th>
+						<th class="th-width">氏名</th>
+						<th class="th-width">担当地区</th>
+						<th class="th-width">売上</th>
+						<th class="th-width">保有顧客数</th>
+						<th class="th-width">更新日時</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- th:object="${departmentSectorForm}" -->
+					<tr>
+						<!-- <td th:text="*{employeeId}"></td>
+						<td th:text="*{employeeName}"></td> -->
+						<!-- <td th:text="*{salesList.area}"></td> -->
+
+						<!-- 旧HTMLの残骸、問題なければ消す -->
+					<tr th:each="emp: ${employeesList}">
+						<td th:text="${emp.employeeId}"></td>
+						<td th:text="${emp.employeeName}"></td>
+						<th:block th:each="sale: ${salesList}">
+							<td th:text="${sale.area}"></td>
+							<td th:text="${sale.sales.profit}"></td>
+							<td th:text="${sale.sales.customer}"></td>
+							<td th:text="${sale.sales.updateTime}"></td>
+						</th:block>
+
+						<!-- 検証用 -->
+						<th:block th:each="sale: ${salesList}">
+							<td th:text="${sale.area}"></td>
+							<td th:text="${sale.sales.profit}"></td>
+							<td th:text="${sale.sales.customer}"></td>
+							<td th:text="${sale.sales.updateTime}"></td>
+						</th:block>
+
+						<!-- TODO:更新と削除を追加する -->
+						<!-- 	<td><a class="btn btn-primary"
+						th:href="@{'/department/edit' + ${emp.employeeId}}">編集</a></td>
+					<td><a class="btn btn-danger"
+						th:href="@{'/employee/delete/' + ${emp.employeeId}}">退職</a></td> -->
+					</tr>
+
+					<!-- 検証用 -->
+					<!-- 	<tr th:each="sale: ${salesList}">
+						<td th:text="${sale.area}"></td>
+						<td th:text="${sale.sales.profit}"></td>
+						<td th:text="${sale.sales.customer}"></td>
+						<td th:text="${sale.sales.updateTime}"></td>
+					</tr> -->
+				</tbody>
+			</table>
+			<!-- </form> -->
+		</div>
+	</div>
+</body>
+</html>

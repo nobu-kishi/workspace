@@ -5,6 +5,7 @@
 <head>
 <title>社員一覧</title>
 <!-- 個別CSS読込 -->
+	<!-- TODO:CSSのパス後で治す -->
 <link rel="stylesheet" th:href="@{/css/employee/department.css}">
 </head>
 <body class="bg-light">
@@ -26,15 +27,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="item: *{departmentList}">
+					<tr th:each="item: ${departmentList}">
 						<td th:text="${item.departmentId}"></td>
-						<!-- <td th:text="${item.departmentArea}"></td> -->
+						<td th:text="${item.departmentName}"></td>
 						<td th:text="${item.profitCount}"></td>
 						<td th:text="${item.customerCount}"></td>
 						<td th:text="${item.profitAvg}"></td>
 						<td><a class="btn btn-primary"
-							th:href="@{'/department/' + ${item.departmentId}}">一覧</a></td>
-						<td>
+							th:href="@{'/department/sector/' + ${item.departmentId}}">一覧</a></td>
 					</tr>
 				</tbody>
 			</table>

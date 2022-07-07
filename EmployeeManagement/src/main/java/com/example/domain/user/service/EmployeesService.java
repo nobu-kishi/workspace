@@ -9,7 +9,6 @@ public interface EmployeesService {
 	/** ユーザー登録 */
 	public void signup(Employees employees);
 
-	//TODO
 	/** ユーザー取得 */
 	public List<Employees> getEmployees(Employees employees);
 
@@ -28,5 +27,8 @@ public interface EmployeesService {
 	public void deleteOne(Integer employeeId);
 
 	/* 部門別集計 */
-	public List<Employees> salesCount(Employees employees) ;
+	/*	public List<Department> getDepartments(Department department) ;*/
+
+	/** 社員別営業成績一覧 */
+	public List<Employees> getDepartmentSector(Integer departmentId);
 }

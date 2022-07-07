@@ -1,13 +1,21 @@
-package com.example.domain.user.model;
-
+package com.example.form;
 
 import java.util.Date;
 import java.util.List;
 
+import com.example.domain.user.model.Department;
+import com.example.domain.user.model.Sales;
+
 import lombok.Data;
 
 @Data
-public class Employees {
+public class DepartmentSectorForm {
+	/*	private Integer employeeId;
+		private String employeePassword;
+		private String employeeName;
+		private Integer departmentId;
+		private List<Sales> salesList;*/
+
 	private Integer employeeId;
 	private String employeePassword;
 	private String employeeName;

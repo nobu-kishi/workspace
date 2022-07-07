@@ -30,11 +30,14 @@ public class EmployeesEditController {
 	@GetMapping("/edit/{employeeId:.+}")
 	public String getEmployees(EmployeesEditForm form, Model model,
 			@PathVariable("employeeId") Integer employeeId) {
-		System.out.println("編集画面Debag");
+		System.out.println("編集画面表示開始");
 		Employees employees = employeesService.getfindOne(employeeId);
-		/*employees.setEmployeePassword(null);*/
+		System.out.println("SQL抽出結果");
+		System.out.println(employees);
 		form = modelMapper.map(employees, EmployeesEditForm.class);
 		model.addAttribute("EmployeesEditForm", form);
+		System.out.println("Form出力値");
+		System.out.println(form);
 		return "employee/edit";
 	}
 
@@ -57,10 +60,10 @@ public class EmployeesEditController {
 		return "redirect:/employee/list";
 	}
 
-	/** ユーザー削除処理 */
-	@PostMapping(value = "/edit", params = "delete")
-	public String deleteEmployees(EmployeesEditForm form, Model model) {
-		employeesService.deleteOne(form.getEmployeeId());
-		return "redirect:/employee/list";
-	}
+	/*	*//** ユーザー削除処理 *//*
+							@PostMapping(value = "/edit", params = "delete")
+							public String deleteEmployees(EmployeesEditForm form, Model model) {
+							employeesService.deleteOne(form.getEmployeeId());
+							return "redirect:/employee/list";
+							}*/
 }

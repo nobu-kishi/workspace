@@ -24,12 +24,15 @@ public interface EmployeeMapper {
 			@Param("employeePassword") String employeePassword,
 			@Param("employeeName") String employeeName,
 			@Param("employeePhone") String employeePhone,
-			@Param("employeeEmail") String employeeEmail
-	/*@Param("employeeJoinDate") Date employeeJoinDate*/);
+			@Param("employeeEmail") String employeeEmail);
+	/*@Param("employeeJoinDate") Date employeeJoinDate*/
 
 	/** ユーザー削除(1件) */
 	public int deleteOne(@Param("employeeId") Integer employeeId);
 
-	/* 部門別集計 */
-	public List<Employees> salesCount(Employees employees) ;
+	/* 部門一覧集計 */
+	/*public List<Department> getDepartments(Department department);*/
+
+	/** 社員別営業成績一覧 */
+	public List<Employees> getDepartmentSector(@Param("departmentId") Integer departmentId);
 }
