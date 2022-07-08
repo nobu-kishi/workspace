@@ -1,7 +1,9 @@
 package com.example.domain.user.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +26,27 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	/** 社員別営業成績一覧 */
 	@Override
-	public List<DepartmentSector> getDepartmentSector(Integer departmentId) {
-		return mapper.getDepartmentSector(departmentId);
+	public List<DepartmentSector> departmentsSales(Integer departmentId, DepartmentSector dSector) {
+		return mapper.departmentsSales(departmentId, dSector);
 	}
 
+	/** 個人売上(1件) */
+	public DepartmentSector personalSales(@Param("employeeId") Integer employeeId) {
+		return mapper.personalSales(employeeId);
+	}
 
-	/*	@Override
-		public List<DepartmentSector> getDepartmentSector(Integer departmentId) {
-			return mapper.getDepartmentSector(departmentId);
-		}*/
+	/** 全部署従業員売上(全件) */
+	public List<DepartmentSector> allSales(DepartmentSector dSector) {
+		return mapper.allSales(dSector);
+
+	}
+
+	/** 売上更新(1件) */
+	public void updateSales(Integer employeeId,
+			String area,
+			Integer profit,
+			Integer customer,
+			Date updateTime) {
+		mapper.updateSales(employeeId, area, profit, customer, updateTime);
+	}
 }

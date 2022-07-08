@@ -25,43 +25,36 @@ public class DepartmentSectorController {
 	@Autowired
 	private ModelMapper modelMapper;
 
+	/*	@GetMapping("/sector}")
+		public String departmentsSales(@ModelAttribute DepartmentSectorForm form, Model model) {
+			System.out.println("全社員一覧取得開始");
+
+			//部門毎に従業員を抽出
+			DepartmentSector dSector = modelMapper.map(form, DepartmentSector.class);
+			List<DepartmentSector> departmentSectorList = departmentService.allSales(dSector);
+
+			System.out.println("フォーム出力値");
+			System.out.println(departmentSectorList);
+
+			model.addAttribute("departmentSectorList", departmentSectorList);
+			return "department/sector";
+		}*/
+
 	@GetMapping("/sector/{departmentId:.+}")
-	public String getDepartmentSector(@ModelAttribute DepartmentSectorForm form, Model model,
+	public String departmentsSales(@ModelAttribute DepartmentSectorForm form, Model model,
 			@PathVariable("departmentId") Integer departmentId) {
 		System.out.println("個人一覧取得開始");
 
 		//部門毎に従業員を抽出
-		List<DepartmentSector> departmentSectorList = departmentService.getDepartmentSector(departmentId);
-		System.out.println("SQL抽出");
-		System.out.println(departmentSectorList);
-		form = modelMapper.map(departmentSectorList, DepartmentSectorForm.class);
+		DepartmentSector dSector = modelMapper.map(form, DepartmentSector.class);
+		List<DepartmentSector> departmentSectorList = departmentService.departmentsSales(departmentId, dSector);
+
 		System.out.println("フォーム出力値");
-		System.out.println(departmentSectorList.get(1));
+		System.out.println(departmentSectorList);
 
-
-		/*Employees test = employeesList.get(1);*/
-		/*System.out.println(test);*/
-
-		//型変換
-		/*Employees employees = modelMapper.map(form, Employees.class);*/
-
-
-		/*form.setSalesList(employeesList.getSalesList());*/
-
-		/*form.setSalesList(employees.getSalesList());*/
-
-		//TODO:Forで値をセットする
-		/*form.setSalesList(employeesList.get(0).getSalesList());
-		*/
-
-
-		/*System.out.println(employeesList.get(0).getSalesList());*/
-
-		model.addAttribute("departmentSectorForm", form);
+		model.addAttribute("departmentSectorList", departmentSectorList);
 		return "department/sector";
 	}
-
-
 
 	/*	 社員検索
 		@PostMapping(value = "/list")

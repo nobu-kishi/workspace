@@ -25,7 +25,6 @@ public interface EmployeeMapper {
 			@Param("employeeName") String employeeName,
 			@Param("employeePhone") String employeePhone,
 			@Param("employeeEmail") String employeeEmail);
-	/*@Param("employeeJoinDate") Date employeeJoinDate*/
 
 	/** ユーザー削除(1件) */
 	public int deleteOne(@Param("employeeId") Integer employeeId);
@@ -34,5 +33,5 @@ public interface EmployeeMapper {
 	/*public List<Department> getDepartments(Department department);*/
 
 	/** 社員別営業成績一覧 */
-	/*public List<Employees> getDepartmentSector(@Param("departmentId") Integer departmentId);*/
+	/*public List<Employees> departmentsSales(@Param("departmentId") Integer departmentId);*/
 }

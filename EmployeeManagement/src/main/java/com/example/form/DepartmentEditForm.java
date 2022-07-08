@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class DepartmentSectorForm {
+public class DepartmentEditForm {
 	private Integer employeeId;
 	private String employeeName;
 	private String area;

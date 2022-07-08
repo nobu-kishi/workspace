@@ -24,7 +24,7 @@ public class DepartmentListController {
 	@Autowired
 	private ModelMapper modelMapper;
 
-	@GetMapping /*("/department")*/
+	@GetMapping
 	public String getDepartmentList(@ModelAttribute DepartmentListForm form, Model model) {
 		System.out.println("部署一覧表示");
 		Department department = modelMapper.map(form, Department.class);
@@ -33,4 +33,7 @@ public class DepartmentListController {
 		model.addAttribute("departmentList", departmentList);
 		return "department/department";
 	}
+
+
+
 }

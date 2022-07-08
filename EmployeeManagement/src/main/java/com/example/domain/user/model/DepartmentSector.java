@@ -4,6 +4,8 @@ import java.util.Date;
 
 import lombok.Data;
 
+
+//FIXME:salesとEmployeeを連結する処理に直したい・・・
 @Data
 public class DepartmentSector {
 	private Integer employeeId;

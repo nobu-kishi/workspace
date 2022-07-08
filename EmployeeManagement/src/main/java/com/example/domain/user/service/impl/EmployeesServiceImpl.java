@@ -39,10 +39,9 @@ public class EmployeesServiceImpl implements EmployeesService {
 			String employeePassword,
 			String employeeName,
 			String employeePhone,
-			String employeeEmail
-	/*Date employeeJoinDate*/) {
+			String employeeEmail) {
 		mapper.updateOne(employeeId, employeePassword, employeeName, employeePhone,
-				employeeEmail/*, employeeJoinDate*/);
+				employeeEmail);
 	}
 
 	/** ユーザー削除(1件) */
@@ -59,7 +58,7 @@ public class EmployeesServiceImpl implements EmployeesService {
 
 	/** 社員別営業成績一覧 */
 	/*	@Override
-		public List<Employees> getDepartmentSector(Integer departmentId) {
-			return mapper.getDepartmentSector(departmentId);
+		public List<Employees> departmentsSales(Integer departmentId) {
+			return mapper.departmentsSales(departmentId);
 		}*/
 }

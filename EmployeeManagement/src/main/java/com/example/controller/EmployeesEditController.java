@@ -45,7 +45,6 @@ public class EmployeesEditController {
 	@PostMapping(value = "/edit", params = "update")
 	public String updateEmployees(EmployeesEditForm form, Model model) {
 		System.out.println("更新処理開始");
-		/*SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");*/
 		try {
 			employeesService.updateOne(form.getEmployeeId(),
 					form.getEmployeePassword(),
@@ -59,11 +58,4 @@ public class EmployeesEditController {
 		}
 		return "redirect:/employee/list";
 	}
-
-	/*	*//** ユーザー削除処理 *//*
-							@PostMapping(value = "/edit", params = "delete")
-							public String deleteEmployees(EmployeesEditForm form, Model model) {
-							employeesService.deleteOne(form.getEmployeeId());
-							return "redirect:/employee/list";
-							}*/
 }

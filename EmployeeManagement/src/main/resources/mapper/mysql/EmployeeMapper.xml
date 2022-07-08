@@ -18,8 +18,8 @@
 			resultMap="department" />
 		<!-- ofType="com.example.domain.user.model.Department" columnPrefix="department_"
 			/> -->
-		<collection property="salesList" resultMap="sales"
-			columnPrefix="sales_" />
+		<!-- <collection property="salesList" resultMap="sales"
+			columnPrefix="sales_" /> -->
 		<!-- ofType="com.example.domain.user.model.Sales" /> --><!-- columnPrefix="sales_" /> -->
 	</resultMap>
 
@@ -34,26 +34,15 @@
 	</resultMap>
 
 	<!-- マッピング定義(営業成績) -->
-	<resultMap type="com.example.domain.user.model.Sales"
+<!-- 	<resultMap type="com.example.domain.user.model.Sales"
 		id="sales">
 		<id column="employee_id" property="employeeId" />
 		<result column="area" property="area" />
 		<result column="profit" property="profit" />
 		<result column="customer" property="customer" />
 		<result column="update_time" property="updateTime" />
-	</resultMap>
+	</resultMap> -->
 
-
-	<!-- マッピング定義(セクター一覧) -->
-<!-- 	<resultMap type="com.example.domain.user.model.Department"
-		id="department">
-		<id column="department_id" property="departmentId" />
-		<result column="department_name" property="departmentName" />
-		<result column="profit_count" property="profitCount" />
-		<result column="customer_count" property="customerCount" />
-		<result column="profit_avg" property="profitAvg" />
-	</resultMap>
- -->
 	<!-- ユーザー1件登録 -->
 	<insert id="insertOne">
 		insert into employees(
@@ -97,8 +86,6 @@
 	<!-- ユーザー1件検索 -->
 	<select id="findOne" resultMap="employees">
 		select *
-		<!-- employee_id ,employee_password ,employee_name ,employee_phone ,employee_email
-			,employees_employeeJoinDate -->
 		from employees
 		where
 		employee_id = #{employeeId}
@@ -112,7 +99,6 @@
 		,employee_name = #{employeeName}
 		,employee_phone = #{employeePhone}
 		,employee_email = #{employeeEmail}
-		<!-- ,employeeJoinDate = #{employeeJoinDate} -->
 		where
 		employee_id =#{employeeId}
 	</update>
@@ -123,14 +109,4 @@
 		where employee_id =
 		#{employeeId}
 	</delete>
-
-	<!-- TODO:問題なければ、消す -->
-	<!-- ■追加課題A -->
-
-	<!-- 部門一覧取得 -->
-	<!-- <select id="getDepartments" resultType="Department"> SELECT d.department_id
-		, d.department_name , SUM(s.profit) AS profit_count , SUM(s.customer) AS
-		customer_count , FLOOR(AVG(s.profit)) AS profit_avg FROM departments d JOIN
-		employees e ON e.department_id = d.department_id JOIN sales s ON e.employee_id
-		= s.employee_id GROUP BY d.department_name </select> -->
 </mapper>

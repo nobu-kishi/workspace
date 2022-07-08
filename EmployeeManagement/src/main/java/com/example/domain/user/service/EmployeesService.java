@@ -20,8 +20,7 @@ public interface EmployeesService {
 			String employeePassword,
 			String employeeName,
 			String employeePhone,
-			String employeeEmail
-			/*Date employeeJoinDate*/);
+			String employeeEmail);
 
 	/** ユーザー削除(1件) */
 	public void deleteOne(Integer employeeId);
