@@ -58,8 +58,8 @@ public class EmployeesServiceImpl implements EmployeesService {
 		}*/
 
 	/** 社員別営業成績一覧 */
-	@Override
-	public List<Employees> getDepartmentSector(Integer departmentId) {
-		return mapper.getDepartmentSector(departmentId);
-	}
+	/*	@Override
+		public List<Employees> getDepartmentSector(Integer departmentId) {
+			return mapper.getDepartmentSector(departmentId);
+		}*/
 }

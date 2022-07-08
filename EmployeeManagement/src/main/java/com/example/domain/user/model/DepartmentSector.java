@@ -1,12 +1,16 @@
 package com.example.domain.user.model;
 
-import java.util.List;
+import java.util.Date;
 
 import lombok.Data;
 
 @Data
 public class DepartmentSector {
-	private Integer departmentId;
-	private String departmentName;
-	private List<Sales> salesList;
+	private Integer employeeId;
+	private String employeeName;
+	private String area;
+	private Integer profit;
+	private Integer customer;
+	private Date updateTime;
+
 }

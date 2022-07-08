@@ -4,21 +4,15 @@
 <!-- Mapperとxmlのマッピング -->
 <mapper namespace="com.example.repository.DepartmentMapper">
 	<!-- マッピング定義(ユーザー) -->
-	<!-- <resultMap type="com.example.domain.user.model.Employees"
-		id="Employees">
-		<id column="employee_id" property="employeeId" />
-		<result column="employee_password" property="employeePassword" />
-		<result column="employee_name" property="employeeName" />
-		<result column="employee_phone;" property="employeePhone;" />
-		<result column="employee_email" property="employeeEmail" />
-		<result column="employee_join_date" property="employeeJoinDate" />
-		<result column="department_id" property="departmentId" />
-		<collection property="departmentList" resultMap="department"/>
-			ofType="com.example.domain.user.model.Department" columnPrefix="department_" />
-		<collection property="salesList" resultMap="sales"
-			ofType="com.example.domain.user.model.Sales" />columnPrefix="sales_"
-			/>
-	</resultMap> -->
+	<!-- <resultMap type="com.example.domain.user.model.Employees" id="Employees">
+		<id column="employee_id" property="employeeId" /> <result column="employee_password"
+		property="employeePassword" /> <result column="employee_name" property="employeeName"
+		/> <result column="employee_phone;" property="employeePhone;" /> <result
+		column="employee_email" property="employeeEmail" /> <result column="employee_join_date"
+		property="employeeJoinDate" /> <result column="department_id" property="departmentId"
+		/> <collection property="departmentList" resultMap="department"/> ofType="com.example.domain.user.model.Department"
+		columnPrefix="department_" /> <collection property="salesList" resultMap="sales"
+		ofType="com.example.domain.user.model.Sales" />columnPrefix="sales_" /> </resultMap> -->
 
 	<!-- マッピング定義(部門) -->
 	<resultMap type="com.example.domain.user.model.Department"
@@ -40,42 +34,65 @@
 		<id column="update_time" property="updateTime" />
 	</resultMap>
 
+
+	<!-- マッピング定義(個人一覧) -->
+	<resultMap type="com.example.domain.user.model.Department"
+		id="DepartmentSector">
+		<id column="department_id" property="departmentId" />
+		<result column="department_name" property="departmentName" />
+		<result column="profit" property="profit" />
+		<result column="customer" property="customer" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
 	<!-- ■追加課題A -->
 	<!-- 部門一覧取得 -->
 	<select id="getDepartments" resultType="Department">
 		SELECT
 		d.department_id
-		, d.department_name
+		,
+		d.department_name
 		, SUM(s.profit) AS profit_count
-		, SUM(s.customer) AS customer_count
+		, SUM(s.customer) AS
+		customer_count
 		, FLOOR(AVG(s.profit)) AS profit_avg
 		FROM
 		departments d
 		JOIN
 		employees e ON e.department_id = d.department_id
 		JOIN
-		sales s ON e.employee_id = s.employee_id
+		sales s ON
+		e.employee_id = s.employee_id
 		GROUP BY
 		d.department_name
 		,e.employee_exsits = 1
 	</select>
 
-	<!-- 部門一覧取得 -->
-	<!-- <select id="getDepartmentSector" resultType="Employees">
+	<!-- 社員別一覧取得 -->
+	<select id="getDepartmentSector" resultType="DepartmentSector">
 		SELECT
 		e.employee_id
 		,e.employee_name
-		,s.area
-		,s.profit
-		,s.customer
-		,s.update_time
+		,d.department_id
+		<!-- ,s.employee_id AS sales_employee_id -->
+		,s.area <!-- AS sales_area -->
+		,s.profit<!-- AS sales_profit -->
+		,s.customer<!-- AS sales_customer -->
+		,s.update_time <!-- AS sales_update_time -->
 		FROM employees e
 		JOIN sales s
 		ON e.employee_id = s.employee_id
-		JOIN departments d
+		JOIN
+		departments d
 		ON e.department_id = d.department_id
-		WHERE d.department_id = #{departmentId}
-	</select> -->
+		WHERE d.department_id
+		=
+		#{departmentId}
+
+		<!-- TODO:動的にemployee_exsitsで分岐させる -->
+	</select>
+
+
 
 
 
@@ -94,73 +111,27 @@
 
 
 	<!-- ユーザー1件登録 -->
-	<!--<insert id="insertOne">
-		insert into employees(
-		employee_id
-		employee_password
-		,employee_name
-		,employee_phone
-		,employee_email
-		,employee_join_date
-		)
-		values (
-		#{employeeId}
-		#{employeePassword}
-		,#{employeeName}
-		,#{employeePhone}
-		,#{employeeEmail}
-		,#{employeeJoinDate}
-		);
-	</insert> -->
+	<!--<insert id="insertOne"> insert into employees( employee_id employee_password
+		,employee_name ,employee_phone ,employee_email ,employee_join_date ) values
+		( #{employeeId} #{employeePassword} ,#{employeeName} ,#{employeePhone} ,#{employeeEmail}
+		,#{employeeJoinDate} ); </insert> -->
 
 	<!-- ユーザー複数件取得 -->
-	<!-- <select id="findMany" resultType="Employees">
-		select *
-		from employees
-		社員別一覧画面検証用 JOIN sales ON employees.employee_id = sales.employee_id;
-		<where>
-			<if test="employeeId != null">
-				employee_id like CONCAT('%', #{employeeId}, '%')
-			</if>
-			<if test="employeeName != null">
-				and employee_name like CONCAT('%', #{employeeName}, '%')
-			</if>
-			<if test="employeeEmail != null">
-				and employee_email like CONCAT('%', #{employeeEmail},'%')
-			</if>
-			<if test="employeeJoinDate != null"> employee_join_date like CONCAT('%',
-				#{employeeJoinDate}, '%') </if>
-		</where>
-	</select>
-
-	ユーザー1件検索
-	<select id="findOne" resultMap="Employees">
-		select *
-		employee_id ,employee_password ,employee_name ,employee_phone ,employee_email
-			,employees_employeeJoinDate
-		from employees
-		where
-		employee_id = #{employeeId}
-	</select>
-
-	ユーザー1件更新
-	<update id="updateOne">
-		update employees
-		set
-		employee_password = #{employeePassword}
-		,employee_name = #{employeeName}
-		,employee_phone = #{employeePhone}
-		,employee_email = #{employeeEmail}
-		,employeeJoinDate = #{employeeJoinDate}
-		where
-		employee_id =#{employeeId}
-	</update>
-
-	ユーザー1件削除
-	<delete id="deleteOne">
-		delete from employees
-		where employee_id = #{employeeId}
-	</delete> -->
+	<!-- <select id="findMany" resultType="Employees"> select * from employees
+		社員別一覧画面検証用 JOIN sales ON employees.employee_id = sales.employee_id; <where>
+		<if test="employeeId != null"> employee_id like CONCAT('%', #{employeeId},
+		'%') </if> <if test="employeeName != null"> and employee_name like CONCAT('%',
+		#{employeeName}, '%') </if> <if test="employeeEmail != null"> and employee_email
+		like CONCAT('%', #{employeeEmail},'%') </if> <if test="employeeJoinDate !=
+		null"> employee_join_date like CONCAT('%', #{employeeJoinDate}, '%') </if>
+		</where> </select> ユーザー1件検索 <select id="findOne" resultMap="Employees"> select
+		* employee_id ,employee_password ,employee_name ,employee_phone ,employee_email
+		,employees_employeeJoinDate from employees where employee_id = #{employeeId}
+		</select> ユーザー1件更新 <update id="updateOne"> update employees set employee_password
+		= #{employeePassword} ,employee_name = #{employeeName} ,employee_phone =
+		#{employeePhone} ,employee_email = #{employeeEmail} ,employeeJoinDate = #{employeeJoinDate}
+		where employee_id =#{employeeId} </update> ユーザー1件削除 <delete id="deleteOne">
+		delete from employees where employee_id = #{employeeId} </delete> -->
 
 
 </mapper>

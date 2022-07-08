@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.user.model.Department;
+import com.example.domain.user.model.DepartmentSector;
 import com.example.domain.user.service.DepartmentService;
 import com.example.repository.DepartmentMapper;
 
@@ -22,8 +23,14 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	/** 社員別営業成績一覧 */
+	@Override
+	public List<DepartmentSector> getDepartmentSector(Integer departmentId) {
+		return mapper.getDepartmentSector(departmentId);
+	}
+
+
 	/*	@Override
-		public Employees getDepartmentSector(Integer departmentId) {
+		public List<DepartmentSector> getDepartmentSector(Integer departmentId) {
 			return mapper.getDepartmentSector(departmentId);
 		}*/
 }
