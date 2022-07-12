@@ -47,12 +47,10 @@ public class DepartmentEditController {
 	}
 
 	/** ユーザー更新処理 */
-	@PostMapping(value = "/employee", params = "update")
+	/*@PostMapping(value = "/employee", params = "update")*/
+	@PostMapping("/employee")
 	public String updateEmployees(DepartmentEditForm form, Model model) {
 		System.out.println("更新処理開始");
-
-		/*Calendar calendar = Calendar.getInstance();*/
-		/*form.setUpdateTime(calendar.getTime());*/
 		Date nowDate = new Date();
 		form.setUpdateTime(nowDate);
 
@@ -66,6 +64,6 @@ public class DepartmentEditController {
 		} catch (Exception e) {
 			log.error("社員情報更新でエラー", e);
 		}
-		return "redirect:/department";
+		return "redirect:/department/sector";
 	}
 }

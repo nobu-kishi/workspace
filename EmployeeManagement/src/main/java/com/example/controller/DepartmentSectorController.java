@@ -55,27 +55,4 @@ public class DepartmentSectorController {
 		model.addAttribute("departmentList", departmentList);
 		return "department/sector";
 	}
-
-	/** ユーザー更新処理 */
-	/*	@PostMapping("/sector/{departmentId:.+}")
-		public String updateEmployees(DepartmentEditForm form, Model model) {
-			System.out.println("更新処理開始");
-
-			Calendar calendar = Calendar.getInstance();
-			form.setUpdateTime(calendar.getTime());
-			Date nowDate = new Date();
-			form.setUpdateTime(nowDate);
-
-			try {
-				departmentService.updateSales(form.getEmployeeId(),
-						form.getArea(),
-						form.getProfit(),
-						form.getCustomer(),
-						form.getUpdateTime());
-
-			} catch (Exception e) {
-				log.error("社員情報更新でエラー", e);
-			}
-			return "redirect:/department";
-		}*/
 }

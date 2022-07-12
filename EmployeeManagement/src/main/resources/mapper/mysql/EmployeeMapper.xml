@@ -18,8 +18,8 @@
 			resultMap="department" />
 		<!-- ofType="com.example.domain.user.model.Department" columnPrefix="department_"
 			/> -->
-		<!-- <collection property="salesList" resultMap="sales"
-			columnPrefix="sales_" /> -->
+		<!-- <collection property="salesList" resultMap="sales" columnPrefix="sales_"
+			/> -->
 		<!-- ofType="com.example.domain.user.model.Sales" /> --><!-- columnPrefix="sales_" /> -->
 	</resultMap>
 
@@ -28,20 +28,17 @@
 		id="department">
 		<id column="department_id" property="departmentId" />
 		<result column="department_name" property="departmentName" />
-<!-- 		<result column="profit_count" property="profitCount" />
-		<result column="customer_count" property="customerCount" />
-		<result column="profit_avg" property="profitAvg" /> -->
+		<!-- <result column="profit_count" property="profitCount" /> <result column="customer_count"
+			property="customerCount" /> <result column="profit_avg" property="profitAvg"
+			/> -->
 	</resultMap>
 
 	<!-- マッピング定義(営業成績) -->
-<!-- 	<resultMap type="com.example.domain.user.model.Sales"
-		id="sales">
-		<id column="employee_id" property="employeeId" />
-		<result column="area" property="area" />
-		<result column="profit" property="profit" />
-		<result column="customer" property="customer" />
-		<result column="update_time" property="updateTime" />
-	</resultMap> -->
+	<!-- <resultMap type="com.example.domain.user.model.Sales" id="sales"> <id
+		column="employee_id" property="employeeId" /> <result column="area" property="area"
+		/> <result column="profit" property="profit" /> <result column="customer"
+		property="customer" /> <result column="update_time" property="updateTime"
+		/> </resultMap> -->
 
 	<!-- ユーザー1件登録 -->
 	<insert id="insertOne">
@@ -95,12 +92,15 @@
 	<update id="updateOne">
 		update employees
 		set
-		employee_password = #{employeePassword}
+		employee_password =
+		#{employeePassword}
 		,employee_name = #{employeeName}
-		,employee_phone = #{employeePhone}
+		,employee_phone =
+		#{employeePhone}
 		,employee_email = #{employeeEmail}
 		where
-		employee_id =#{employeeId}
+		employee_id
+		=#{employeeId}
 	</update>
 
 	<!-- ユーザー1件削除 -->
@@ -109,4 +109,13 @@
 		where employee_id =
 		#{employeeId}
 	</delete>
+
+	<!-- １名退職 -->
+	<update id="retireOne">
+		UPDATE employees
+		SET
+		employee_exsits = 0
+		WHERE
+		employee_id = #{employeeId};
+	</update>
 </mapper>
