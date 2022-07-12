@@ -4,13 +4,29 @@
 	layout:decorate="~{layout/layout}">
 <head>
 <title>社員一覧</title>
-<!-- 個別CSS読込 -->
+<!-- 個別CSS・Js読込 -->
 <link rel="stylesheet" th:href="@{/css/employee/list.css}">
+<script th:src="@{/js/sector.js}"></script>
 </head>
 <body class="bg-light">
 	<div layout:fragment="content">
 		<div class="header border-bottom">
 			<h1 class="h2">社員別一覧画面</h1>
+		</div>
+		<div class="container">
+			<table class="table">
+				<tr>
+					<td><input type="radio" id="all" name="radio" value="全職員"
+						onclick="selectClick()" checked>全職員
+					<td>
+					<td><input type="radio" id="working" name="radio" value="在籍社員"
+						onclick="selectClick()">在籍社員
+					<td>
+					<td><input type="radio" id="retire" name="radio" value="退職社員"
+						onclick="selectClick()">退職社員
+					<td>
+				</tr>
+			</table>
 		</div>
 		<!-- 一覧表示 -->
 		<div>
@@ -25,22 +41,28 @@
 						<th class="th-width">更新日時</th>
 						<th></th>
 						<th></th>
+						<th class="th-width">存在要否</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-					<tr th:each="item: ${departmentSectorList}">
+				<tbody id="exsitsList">
+					<!-- MEMO: exsitsClass:活性化 bg-secondary:非活性 -->
+					<tr th:each="item: ${departmentList}"
+						th:classappend="${item.employeeExsits}? 'exsits' : 'bg-secondary'">
 						<td th:text="${item.employeeId}"></td>
 						<td th:text="${item.employeeName}"></td>
 						<td th:text="${item.area}"></td>
 						<td th:text="${item.profit}"></td>
 						<td th:text="${item.customer}"></td>
-						<td th:text="${#dates.format(item.updateTime,'YYYY/MM/dd HH:mm:ss')}"></td>
-						<!-- TODO:更新と削除を追加する -->
+						<td
+							th:text="${#dates.format(item.updateTime,'YYYY/MM/dd HH:mm:ss')}"></td>
 						<td><a class="btn btn-primary"
 							th:href="@{'/department/employee/' + ${item.employeeId}}">編集</a></td>
-						<td><a class="btn btn-danger"
-							th:href="@{'/department/retire' + ${item.employeeId}}">退職</a></td>
+						<!-- <td><a class="btn btn-danger"
+							th:href="@{'/department/retire/' + ${item.employeeId}}">退職</a></td> -->
+						<td><button class="btn btn-danger" type="button" onClick="retireClick()">退職</button></td>
+						<!-- <td><a class="btn btn-danger" disabled>退職</a></td> -->
+						<!-- 検証用 -->
+						<td th:text="${item.employeeExsits}"></td>
 					</tr>
 				</tbody>
 			</table>

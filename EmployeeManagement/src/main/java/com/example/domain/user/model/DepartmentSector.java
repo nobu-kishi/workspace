@@ -10,6 +10,7 @@ import lombok.Data;
 public class DepartmentSector {
 	private Integer employeeId;
 	private String employeeName;
+	private Boolean employeeExsits;
 	private String area;
 	private Integer profit;
 	private Integer customer;

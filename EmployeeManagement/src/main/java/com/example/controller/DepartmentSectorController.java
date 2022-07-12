@@ -25,20 +25,20 @@ public class DepartmentSectorController {
 	@Autowired
 	private ModelMapper modelMapper;
 
-	/*	@GetMapping("/sector}")
-		public String departmentsSales(@ModelAttribute DepartmentSectorForm form, Model model) {
-			System.out.println("全社員一覧取得開始");
+	@GetMapping("/sector")
+	public String departmentsSales(@ModelAttribute DepartmentSectorForm form, Model model) {
+		System.out.println("全社員一覧取得開始");
 
-			//部門毎に従業員を抽出
-			DepartmentSector dSector = modelMapper.map(form, DepartmentSector.class);
-			List<DepartmentSector> departmentSectorList = departmentService.allSales(dSector);
+		//部門毎に従業員を抽出
+		DepartmentSector dSector = modelMapper.map(form, DepartmentSector.class);
+		List<DepartmentSector> departmentList = departmentService.allSales(dSector);
 
-			System.out.println("フォーム出力値");
-			System.out.println(departmentSectorList);
+		System.out.println("フォーム出力値");
+		System.out.println(departmentList);
 
-			model.addAttribute("departmentSectorList", departmentSectorList);
-			return "department/sector";
-		}*/
+		model.addAttribute("departmentList", departmentList);
+		return "department/sector";
+	}
 
 	@GetMapping("/sector/{departmentId:.+}")
 	public String departmentsSales(@ModelAttribute DepartmentSectorForm form, Model model,
@@ -47,30 +47,35 @@ public class DepartmentSectorController {
 
 		//部門毎に従業員を抽出
 		DepartmentSector dSector = modelMapper.map(form, DepartmentSector.class);
-		List<DepartmentSector> departmentSectorList = departmentService.departmentsSales(departmentId, dSector);
+		List<DepartmentSector> departmentList = departmentService.departmentsSales(departmentId, dSector);
 
 		System.out.println("フォーム出力値");
-		System.out.println(departmentSectorList);
+		System.out.println(departmentList);
 
-		model.addAttribute("departmentSectorList", departmentSectorList);
+		model.addAttribute("departmentList", departmentList);
 		return "department/sector";
 	}
 
-	/*	 社員検索
-		@PostMapping(value = "/list")
-		public String postEmployeesList(@ModelAttribute EmployeesListForm form, Model model) {
-			Employees employees = modelMapper.map(form, Employees.class);
-			List<Employees> employeesList = employeesService.getEmployees(employees);
-			model.addAttribute("employeesList", employeesList);
-			System.out.println("社員検索開始");
-			return "employee/list";
-		}
+	/** ユーザー更新処理 */
+	/*	@PostMapping("/sector/{departmentId:.+}")
+		public String updateEmployees(DepartmentEditForm form, Model model) {
+			System.out.println("更新処理開始");
 
-		*//** ユーザー削除処理 *//*
-							@GetMapping(value = "/delete/{employeeId:.+}")
-							public String deleteEmployees(EmployeesEditForm form, Model model,
-							@PathVariable("employeeId") Integer employeeId) {
-							employeesService.deleteOne(form.getEmployeeId());
-							return "redirect:/employee/list";
-							}*/
+			Calendar calendar = Calendar.getInstance();
+			form.setUpdateTime(calendar.getTime());
+			Date nowDate = new Date();
+			form.setUpdateTime(nowDate);
+
+			try {
+				departmentService.updateSales(form.getEmployeeId(),
+						form.getArea(),
+						form.getProfit(),
+						form.getCustomer(),
+						form.getUpdateTime());
+
+			} catch (Exception e) {
+				log.error("社員情報更新でエラー", e);
+			}
+			return "redirect:/department";
+		}*/
 }
