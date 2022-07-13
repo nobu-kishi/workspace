@@ -28,5 +28,6 @@ public interface EmployeesService {
 	/* 部門別集計 */
 	/*	public List<Department> getDepartments(Department department) ;*/
 
-
+	/*１名退職*/
+	public void retireOne(Integer employeeId);
 }

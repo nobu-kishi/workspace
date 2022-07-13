@@ -61,4 +61,9 @@ public class EmployeesServiceImpl implements EmployeesService {
 		public List<Employees> departmentsSales(Integer departmentId) {
 			return mapper.departmentsSales(departmentId);
 		}*/
+
+	@Override
+	public void retireOne(Integer employeeId) {
+		mapper.retireOne(employeeId);
+	}
 }

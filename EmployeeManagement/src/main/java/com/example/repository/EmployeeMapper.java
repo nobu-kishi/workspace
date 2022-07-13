@@ -34,4 +34,6 @@ public interface EmployeeMapper {
 
 	/** 社員別営業成績一覧 */
 	/*public List<Employees> departmentsSales(@Param("departmentId") Integer departmentId);*/
+
+	public void retireOne(@Param("employeeId" ) Integer employeeId);
 }
