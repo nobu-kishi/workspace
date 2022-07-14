@@ -70,11 +70,12 @@
 		,e.employee_exsits = 1
 	</select>
 
-	<!-- 部署別社員一覧取得 -->
+	<!-- 社員一覧取得（部署別） -->
 	<select id="departmentsSales" resultType="DepartmentSector">
 		SELECT
 		e.employee_id
 		,e.employee_name
+		,e.employee_exsits
 		,s.area
 		,s.profit
 		,s.customer
@@ -89,8 +90,6 @@
 		WHERE d.department_id
 		=
 		#{departmentId}
-
-		<!-- TODO:動的にemployee_exsitsで分岐させる -->
 	</select>
 
 	<!-- 社員一覧取得 -->

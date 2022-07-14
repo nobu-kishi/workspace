@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 <head>
 </head>
 <body>
 	<div layout:fragment="menu" class="bg-light">
 		<ul class="nav nav-pills nav-stacked">
-			<li role="presentation"><a class="nav-link"
-				th:href="@{'/employee/list'}">社員一覧</a></li>
+			<li role="presentation"><a class="nav-link" th:href="@{'/employee/list'}">社員一覧</a></li>
 		</ul>
+		<hr>
 		<ul class="nav nav-pills nav-stacked">
-			<li role="presentation"><a class="nav-link"
-				th:href="@{'/employee/signup'}">新規社員登録</a></li>
+			<li role="presentation"><a class="nav-link" th:href="@{'/employee/signup'}">社員登録</a></li>
 		</ul>
+		<hr>
+		<!-- TODO:パスを変える -->
 		<ul class="nav nav-pills nav-stacked">
-			<li role="presentation"><a class="nav-link"
-				th:href="@{'/department'}">部門一覧</a></li>
+			<li role="presentation"><a class="nav-link" th:href="@{'/employee/signup'}">一括社員登録</a></li>
 		</ul>
-				<ul class="nav nav-pills nav-stacked">
-			<li role="presentation"><a class="nav-link"
-				th:href="@{'/department/sector'}">社員別営業成績</a></li>
+		<hr>
+		<ul class="nav nav-pills nav-stacked">
+			<li role="presentation"><a class="nav-link" th:href="@{'/department'}">部門一覧</a></li>
 		</ul>
+		<hr>
+		<ul class="nav nav-pills nav-stacked">
+			<li role="presentation"><a class="nav-link" th:href="@{'/department/sector'}">営業成績（社員別）</a></li>
+		</ul>
+		<hr>
 	</div>
 </body>
 </html>
