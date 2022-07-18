@@ -9,29 +9,27 @@
 
 <!-- Jquery確認 -->
 <script>
-/* window.addEventListener('DOMContentLoaded', function(){
-	alert('jQuery is ready.')
-	}); */
-/* $(function() { // if document is ready
-	alert('jQuery is ready.')
-}); */
+	/* window.addEventListener('DOMContentLoaded', function(){
+	 alert('jQuery is ready.')
+	 }); */
+	/* $(function() { // if document is ready
+	 alert('jQuery is ready.')
+	 }); */
 
-
-
-// jQueryが読まれない時の対処
-/* window.addEventListener('DOMContentLoaded', function(){
-	  jQueryの処理
-	});
-window.onload = function(){
-	  jQueryの処理
-	}; */
+	// jQueryが読まれない時の対処
+	/* window.addEventListener('DOMContentLoaded', function(){
+	 jQueryの処理
+	 });
+	 window.onload = function(){
+	 jQueryの処理
+	 }; */
 </script>
 
 
 </head>
 <body class="bg-light">
 	<div layout:fragment="content">
-	<!-- <button class="btn btn-danger" id="test" data-id="data-idテスト" type="button">テスト</button> -->
+		<!-- <button class="btn btn-danger" id="test" data-id="data-idテスト" type="button">テスト</button> -->
 		<div class="header border-bottom">
 			<h1 class="h2">営業成績（社員別）</h1>
 		</div>
@@ -76,8 +74,8 @@ window.onload = function(){
 					</thead>
 					<tbody id="exsitsList">
 
-						<!-- MEMO: exsitsClass:活性化 bg-secondary:非活性 -->
-						<tr th:each="item: ${departmentList}" th:classappend="${item.employeeExsits}? 'exsits' : 'bg-secondary'">
+						<!-- MEMO: exsits:活性化 bg-secondary:非活性 -->
+						<tr th:each="item: ${departmentList}" th:classappend="${item.employeeNotExsits}? 'bg-secondary' : 'exsits'">
 							<td th:text="${item.employeeId}"></td>
 							<td th:text="${item.employeeName}"></td>
 							<td th:text="${item.area}"></td>
@@ -88,15 +86,15 @@ window.onload = function(){
 							<!-- FIXME:入れ子になって見にくい + 冗長的なので修正したい -->
 							<td>
 								<a th:href="@{'/department/employee/' + ${item.employeeId}}">
-									<button class="btn btn-primary" type="button" th:disabled="${item.employeeExsits} == false">編集</button>
+									<button class="btn btn-primary" type="button" th:disabled="${item.employeeNotExsits}">編集</button>
 								</a>
 							</td>
 							<td>
-								<button class="btn btn-danger" th:id="${item.employeeId}" type="button" th:disabled="${item.employeeExsits} == false">退職</button>
+								<button class="btn btn-danger" th:id="${item.employeeId}" type="button" th:disabled="${item.employeeNotExsits}">退職</button>
 								<!-- id="retire" name="retire" -->
 								<!--  onClick="retireClick()" -->
 							</td>
-							<td th:text="${item.employeeExsits}"></td>
+							<td th:text="${item.employeeNotExsits}"></td>
 						</tr>
 					</tbody>
 				</table>

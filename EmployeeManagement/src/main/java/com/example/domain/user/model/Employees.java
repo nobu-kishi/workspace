@@ -14,7 +14,7 @@ public class Employees {
 	private String employeePhone;
 	private String employeeEmail;
 	private Date employeeJoinDate;
-	private Boolean employeeExsits;
+	private Boolean employeeNotExsits;
 	private Integer departmentId;
 	private List<Department> departmentList;
 	private List<Sales> salesList;

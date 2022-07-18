@@ -5,11 +5,15 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Sales {
+public class DepartmentBulk {
 	private Integer employeeId;
+	private String employeeName;
+	private Boolean employeeNotExsits;
 	private String area;
 	private Integer profit;
 	private Integer customer;
 	private Date updateTime;
-	private Integer hasTempData;
+	private Boolean hasTempData;
+	private String departmentId;
+	private String departmentName;
 }

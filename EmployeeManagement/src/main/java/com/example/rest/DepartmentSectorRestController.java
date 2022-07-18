@@ -1,4 +1,4 @@
-package com.example.reset;
+package com.example.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -12,7 +12,7 @@ import com.example.form.DepartmentSectorForm;
 
 @RestController
 @RequestMapping("/department")
-public class DepartmentSectorResetController {
+public class DepartmentSectorRestController {
 
 	@Autowired
 	private EmployeesService employeesService;

@@ -6,7 +6,7 @@ import lombok.Data;
 public class Department {
 	private Integer departmentId;
 	private String departmentName;
-	private Integer profitCount;
-	private Integer customerCount;
-	private Integer profitAvg;
+	/*	private Integer profitCount;
+		private Integer customerCount;
+		private Integer profitAvg;*/
 }

@@ -1,13 +1,11 @@
-package com.example.domain.user.model;
+package com.example.form;
 
 import java.util.Date;
 
 import lombok.Data;
 
-
-//FIXME:salesとEmployeeを連結する処理に直したい・・・
 @Data
-public class DepartmentSector {
+public class DepartmentBulkForm {
 	private Integer employeeId;
 	private String employeeName;
 	private Boolean employeeNotExsits;
@@ -16,6 +14,6 @@ public class DepartmentSector {
 	private Integer customer;
 	private Date updateTime;
 	private Boolean hasTempData;
-	/*private String departmentId;*/
-		private String departmentName;
+	private Integer departmentId;
+	private String departmentName;
 }

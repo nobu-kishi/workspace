@@ -32,26 +32,41 @@
 		/> <collection property="employeesList" resultMap="employees" /> </resultMap> -->
 
 
-	<!-- マッピング定義(部門一覧) -->
+	<!-- マッピング定義(営業成績一覧) -->
 	<resultMap
 		type="com.example.domain.user.model.DepartmentSector"
 		id="DepartmentSector">
 		<id column="department_id" property="departmentId" />
-		<id column="department_name" property="departmentName" />
-		<result column="employee_exsits" property="employeeExsits" />
+		<result column="department_name" property="departmentName" />
+		<result column="employee_not_exsits" property="employeeNotExsits" />
 		<result column="profit" property="profit" />
 		<result column="customer" property="customer" />
 		<result column="update_time" property="updateTime" />
+		<result column="has_temp_data" property="hasTempData" />
 	</resultMap>
+
+	<!-- マッピング定義(一括社員登録) -->
+	<!-- <resultMap
+		type="com.example.domain.user.model.DepartmentBulk"
+		id="DepartmentBulk">
+		<id column="employee_id" property="employeeId" />
+		<result column="employee_name" property="employeeName" />>
+		<result column="employee_not_exsits" property="employeeNotExsits" />
+		<result column="profit" property="profit" />
+		<result column="customer" property="customer" />
+		<result column="update_time" property="updateTime" />
+		<result column="has_temp_data" property="hasTempData" />
+		<result column="department_id" property="departmentId" />
+		<result column="department_name" property="departmentName" />
+	</resultMap> -->
 
 
 	<!-- ■追加課題A -->
-	<!-- 部門一覧取得 -->
-	<select id="getDepartments" resultType="departmentCount">
+	<!-- 部門一覧取得（集計） -->
+	<select id="departmentCount" resultType="departmentCount">
 		SELECT
 		d.department_id
-		,
-		d.department_name
+		,d.department_name
 		, SUM(s.profit) AS profit_count
 		, SUM(s.customer) AS
 		customer_count
@@ -64,22 +79,25 @@
 		sales s ON
 		e.employee_id = s.employee_id
 		WHERE
-		e.employee_exsits= 1
+		e.employee_not_exsits= 0
+		AND
+		s.has_temp_data = 0
 		GROUP BY
 		d.department_id
-		,e.employee_exsits = 1
+		,e.employee_not_exsits = 0
 	</select>
 
-	<!-- 社員一覧取得（部署別） -->
+	<!-- 営業成績取得（部署別） -->
 	<select id="departmentsSales" resultType="DepartmentSector">
 		SELECT
 		e.employee_id
 		,e.employee_name
-		,e.employee_exsits
+		,e.employee_not_exsits
 		,s.area
 		,s.profit
 		,s.customer
 		,s.update_time
+		,s.has_temp_data
 		FROM employees e
 		JOIN sales s
 		ON e.employee_id =
@@ -87,33 +105,38 @@
 		JOIN
 		departments d
 		ON e.department_id = d.department_id
-		WHERE d.department_id
-		=
-		#{departmentId}
+		WHERE
+		s.has_temp_data = 0
+		<!-- FIXME:全社員取得と部署別取得のSQLを統合したい -->
+		<if test="departmentId != null">
+			AND d.department_id = #{departmentId}
+		</if>
 	</select>
 
-	<!-- 社員一覧取得 -->
+	<!-- 営業成績取得（全社員） -->
 	<select id="allSales" resultType="DepartmentSector">
 		SELECT
 		e.employee_id
 		,e.employee_name
-		,e.employee_exsits
+		,e.employee_not_exsits
 		,s.area
 		,s.profit
 		,s.customer
 		,s.update_time
+		,s.has_temp_data
 		FROM employees e
 		JOIN sales s
-		ON e.employee_id =
+		ON e.employee_id
+		=
 		s.employee_id
 		JOIN
 		departments d
 		ON e.department_id = d.department_id
+		WHERE
+		s.has_temp_data = 0
 	</select>
 
-
-
-	<!-- 部署別従業員売上取得（1件） -->
+	<!-- 営業成績取得（個人） -->
 	<select id="personalSales" resultMap="DepartmentSector">
 		SELECT
 		e.employee_id
@@ -136,7 +159,7 @@
 		#{employeeId}
 	</select>
 
-	<!-- 従業員売件更新（1件） -->
+	<!-- 営業成績更新（1件） -->
 	<update id="updateSales">
 		UPDATE sales
 		SET
@@ -149,6 +172,40 @@
 		#{employeeId}
 	</update>
 
+	<!-- 営業成績更新（全件） -->
+	<!-- <update id="updateSales"> UPDATE sales SET area = #{area} ,profit =
+		#{profit} ,customer = #{customer} ,update_time = #{updateTime} WHERE employee_id
+		= #{employeeId} </update> -->
+
+	<!-- 営業成績取得（tempのみ） -->
+		<!-- FIXME:既存の処理で分岐したい -->
+	<!-- <select id="tempSales" resultMap="DepartmentBulk"> -->
+	<select id="tempSales" resultMap="DepartmentSector">
+		SELECT
+		e.employee_id
+		,e.employee_name
+		,e.employee_not_exsits
+		,s.area
+		,s.profit
+		,s.customer
+		,s.update_time
+		,s.has_temp_data
+	<!-- 	,d.department_id -->
+		,d.department_name
+		FROM employees e
+		JOIN sales s
+		ON e.employee_id =
+		s.employee_id
+		JOIN
+		departments d
+		ON e.department_id = d.department_id
+		WHERE
+		s.has_temp_data = true
+	</select>
 
 
+	<!-- <insert>
+
+
+	</insert> -->
 </mapper>

@@ -34,4 +34,7 @@ public class EmployeesEditForm {
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@NotNull(groups = ValidGroup1.class)
 	private Date employeeJoinDate;
+
+	private Boolean employeeNotExsits;
+	private Integer departmentId;
 }

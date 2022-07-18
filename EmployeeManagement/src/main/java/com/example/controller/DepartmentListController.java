@@ -28,7 +28,7 @@ public class DepartmentListController {
 	public String getDepartmentList(@ModelAttribute DepartmentListForm form, Model model) {
 		System.out.println("部署一覧表示");
 		Department department = modelMapper.map(form, Department.class);
-		List<Department> departmentList = departmentService.getDepartments(department);
+		List<Department> departmentList = departmentService.departmentCount(department);
 		System.out.println(departmentList);
 		model.addAttribute("departmentList", departmentList);
 		return "department/department";

@@ -52,8 +52,8 @@ public class EmployeesServiceImpl implements EmployeesService {
 
 	/* 部門別集計 */
 	/*	@Override
-		public List<Department> getDepartments(Department department) {
-			return mapper.getDepartments(department);
+		public List<Department> departmentCount(Department department) {
+			return mapper.departmentCount(department);
 		}*/
 
 	/** 社員別営業成績一覧 */

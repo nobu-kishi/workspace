@@ -11,3 +11,7 @@
 .disabled{
     pointer-events: none;
 }
+
+.not-exsits{
+background-color:#6c757d;
+}
