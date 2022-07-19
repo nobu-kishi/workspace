@@ -21,53 +21,61 @@
 			<button class="btn btn-warning tmp-save" type="button">一時保存</button>
 			<button class="btn btn-success confirm" type="button">確定</button>
 		</div>
-		<div>
-			<table class="table table-striped table-bordered table-hover">
-				<thead class="thead-light">
-					<tr>
-						<!-- <th class="th-width">社員番号</th> -->
-						<th class="th-width">氏名</th>
-						<th class="th-width">担当地区</th>
-						<th class="th-width">売上</th>
-						<th class="th-width">保有顧客数</th>
-						<th class="th-width">課名</th>
-						<!-- <th class="th-width">更新日時</th> -->
-						<th></th>
-						<th class="th-width">Temp要否</th>
-						<!-- <th class="th-width">退職要否</th> -->
-					</tr>
-				</thead>
-				<tbody>
-					<!-- th:classappend="${item.employeeNotExsits}? 'exsits' : 'bg-secondary'" -->
-					<tr th:each="item: ${departmentList}">
-						<td>
-							<input type="text" class="form-control" th:value="${item.employeeName}">
-						</td>
-						<td>
-							<input type="text" class="form-control" th:value="${item.area}">
-						</td>
-						<td>
-							<input type="text" class="form-control" th:value="${item.profit}">
-						</td>
-						<td>
-							<input type="text" class="form-control" th:value="${item.customer}">
-						</td>
-						<td>
-							<input type="text" class="form-control" th:value="${item.departmentName}">
-						</td>
-						<td>
-							<button class="btn btn-danger delete-row" th:id="${item.employeeId}" type="button">削除</button>
-						</td>
-						<!-- th:disabled="${item.employeeNotExsits}" -->
-
-						<td>
-							<input type="text" class="form-control" th:value="${item.hasTempData}">
-						</td>
-						<!-- <td><input type="text" class="form-control" th:value="${item.employeeNotExsits}"></td> -->
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<form id="bulk-form">
+			<div>
+				<table class="table table-striped table-bordered table-hover">
+					<thead class="thead-light">
+						<tr>
+							<!-- <th class="th-width">社員番号</th> -->
+							<th class="th-width">氏名</th>
+							<th class="th-width">担当地区</th>
+							<th class="th-width">売上</th>
+							<th class="th-width">保有顧客数</th>
+							<th class="th-width">課名</th>
+							<!-- <th class="th-width">更新日時</th> -->
+							<th></th>
+							<th class="th-width">Temp要否</th>
+							<!-- <th class="th-width">退職要否</th> -->
+						</tr>
+					</thead>
+					<tbody>
+						<!-- th:classappend="${item.employeeNotExsits}? 'exsits' : 'bg-secondary'" -->
+						<tr th:id="${item.employeeId}" class="bulkList" th:each="item: ${departmentList}">
+							<th:block>
+								<input name="employeeId" type="hidden" class="form-control" th:value="${item.employeeId}">
+							</th:block>
+							<!-- <td>
+								<input name="employeeId" type="hidden" class="form-control" th:value="${item.employeeId}">
+							</td> -->
+							<td>
+								<input name="employeeName" type="text" class="form-control" th:value="${item.employeeName}">
+							</td>
+							<td>
+								<input name="area" type="text" class="form-control" th:value="${item.area}">
+							</td>
+							<td>
+								<input name="profit" type="text" class="form-control" th:value="${item.profit}">
+							</td>
+							<td>
+								<input name="customer" type="text" class="form-control" th:value="${item.customer}">
+							</td>
+							<td>
+								<input name="departmentName" type="text" class="form-control" th:value="${item.departmentName}">
+							</td>
+							<td>
+								<button name="employeeId" class="btn btn-danger delete-row" th:id="${item.employeeId}" type="button">削除</button>
+							</td>
+							<!-- th:disabled="${item.employeeNotExsits}" -->
+							<!-- TODO:後で消す↓ -->
+							<td>
+								<input name="hasTempData" type="text" class="form-control" th:value="${item.hasTempData}">
+							</td>
+							<!-- <td><input name="" type="text" class="form-control" th:value="${item.employeeNotExsits}"></td> -->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</form>
 	</div>
 </body>
 </html>

@@ -7,6 +7,9 @@ console.log($retire);
 const $row = document.getElementsByTagName("tr");
 console.log($row);
 
+const $bulkList = document.getElementsByTagName("bulkList");
+console.log($bulkList);
+
 // 現職者表示制御
 const showWorking = () => {
   let $workingIndex = 0;
@@ -59,70 +62,101 @@ function selectClick() {
 /*------------------------------------------------------------------------------------------------------------*/
 
 // jQueryエリア
-//FIXME:jQueryとJavasqriptが混在しているので、jQueryに寄せて修正したい
+// FIXME:jQueryとJavasqriptが混在しているので、jQueryに寄せて修正したい
 window.addEventListener("DOMContentLoaded", function () {
   /* alert('jQueryは有効です') */
   console.log("jQueryは有効です");
+  var $form = $('#bulk-form')
+  var $serialize = $form.serialize();
+  console.log($serialize);
+  var $serializeArray = $form.serializeArray();
+  console.log($serializeArray);
+
+  /* console.log($(".table tbody tr:last-child input")); */
 
   // コメント必須チェック設定
   // function nullChcek() {
-  //   $("input").validate({
-  //     rules: {
-  //       input要素のname: {
-  //         有効化するルール: true,
-  //       },
-  //     },
-  //     messages: {
-  //       input要素のname: {
-  //         有効化するルール: "エラーとして表示したい文言",
-  //       },
-  //     },
-  //   });
+  // $("input").validate({
+  // rules: {
+  // input要素のname: {
+  // 有効化するルール: true,
+  // },
+  // },
+  // messages: {
+  // input要素のname: {
+  // 有効化するルール: "エラーとして表示したい文言",
+  // },
+  // },
+  // });
   // }
 
-  //リセット
+  // リセット
   $(".reset-table").on("click", function () {
     console.log("リセット");
     $("input").val("");
   });
 
-  //行追加
+
+  // 行追加
+  /* MEMO:行追加と行複製でレコードのid属性（emmployeeIdの重複回避）を削除する */
   $(".insert-row").on("click", function () {
     console.log("行追加");
-    $(".table tbody tr:first-child") // テーブルの一番初めの行を指定する
-      .clone(true) // 指定した一番初めの行のHTML要素を複製する
+    $lastRow = $(".table tbody tr:last-child")
+    $lastRow.clone(true)        // 指定した一番初めの行のHTML要素を複製する
       .appendTo(".table tbody"); // 複製した要素をtbodyに追加する
-    $(".table tbody tr:last-child input").val(""); // 追加した行の値をクリアする
+    $(".table tbody tr:last-child input").val("").removeAttr("id"); // 追加した行の値をクリアする + id属性を空にする
+
+    // 残骸
+    /* $lastRow.find("input").val("").removeAttr("id");*/
+    /*$(".table tbody tr:last-child input").val("").removeAttr("id");*/ // 追加した行の値をクリアする + id属性を空にする
+
   });
 
-  //行複製
+  // 行複製
   $(".clone-row").on("click", function () {
     console.log("複製");
-    $(".table tbody tr:last-child").clone(true).appendTo(".table tbody");
-    $(".table tbody tr:last-child input");
+    $lastRow = $(".table tbody tr:last-child")
+    $lastRow.clone(true).appendTo(".table tbody"); // 追加した行の値をクリアする
+    $(".table tbody tr:last-child").find("button").removeAttr("id"); // ボタンのid属性を空にする
+
+    var form = $('#bulk-form')
+    var formData = form.serialize();
+    console.log(formData);
+    var param = form.serializeArray();
+    console.log(param);
+
+    /*console.log($(".table tbody tr:last-child").find("button").removeAttr("id"));*/
+
+
+    /* $(".delete-row").removeAttr("id", "999"); */
+   /* $(".delete-row").empty(); */
+    /* $(".table tbody tr:last-child input"); */
   });
 
-  //行削除
+  // 行削除
   $(".delete-row").on("click", function () {
     $(this) // クリックした削除ボタンを指定する（ ここがthisであることは重要です ）
       .closest("tr") // 指定した要素の直近のtr要素を取得する
       .remove(); // 取得した要素を削除する
   });
 
-  //一時保存
-  $text = $("input.elemnts]");
+  /*
+	 * $(this).closest("tr").attr(“id");
+	 */
+  // 一時保存
+  $text = $("input.elemnts");
   console.log($text);
   $empty = $("input").val;
   console.log($empty);
   // console.log($.trim($empty.text()));
 
-  //   if (!$('button').val()) {
-  //     alert('Enter your name!');
+  // if (!$('button').val()) {
+  // alert('Enter your name!');
   // }
 
   // $empty = $("input");
   // if ($.trim($empty.text()) == "") {
-  //   console.log("empty");
+  // console.log("empty");
   // }
 
   // $input = $("input").val().length;
@@ -143,15 +177,15 @@ window.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  //     retireEmployee(employeeId);
-  //   } else {
-  //     window.alert("未入力の項目が存在します");
-  //   }
+  // retireEmployee(employeeId);
+  // } else {
+  // window.alert("未入力の項目が存在します");
+  // }
   // });
 
   /*
-tmp-save
-confirm*/
+	 * tmp-save confirm
+	 */
 
   $(".btn-danger").on("click", function () {
     if (window.confirm("この作業は修正できません。本当によろしいですか？")) {
@@ -162,7 +196,7 @@ confirm*/
     }
   });
 
-  //ajaxでemployeeIdを送信し、ページ遷移せずにページ情報を更新
+  // ajaxでemployeeIdを送信し、ページ遷移せずにページ情報を更新
   function retireEmployee(employeeId) {
     console.log("employeeIdは「" + employeeId + "」");
 

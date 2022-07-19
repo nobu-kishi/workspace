@@ -66,49 +66,52 @@ function retireClick() {
   }
 }
 
-const form = /*[[${item.employeeId}]]*/ "employeeId";
-console.log(employeeId);
+/*const form =  [[${item.employeeId}]]  "employeeId";
+console.log(employeeId);*/
 
 /*------------------------------------------------------------------------------------------------------------*/
-/** 画⾯ロード時の処理. */
-jQuery(function ($) {
-  /** 更新ボタンを押したときの処理. */
-  $("#btn-update").click(function (event) {
-    // ユーザー更新
-    updateUser();
-  });
-  /** 削除ボタンを押したときの処理. */
-  $("#btn-delete").click(function (event) {
-    // ユーザー削除
-    deleteUser();
-  });
-});
 
-/** ユーザー更新処理. */
-function updateUser() {
-  // フォームの値を取得
-  /*var formData = $("#user-detail-form").serialize;*/
 
-  Array();
-  // ajax通信
-  $.ajax({
-    type: "PUT",
-    cache: false,
-    url: "/department/retire",
-    data: formData,
-    dataType: "json",
-  })
-    .done(function (data) {
-      // ajax成功時の処理
-      alert("ユーザーを更新しました");
-      // ユーザー⼀覧画⾯にリダイレクト
-      /*window.location.href = "/user/list";*/
-    })
-    .fail(function (jqXHR, textStatus, errorThrown) {
-      // ajax失敗時の処理
-      alert("ユーザー更新に失敗しました");
-    })
-    .always(function () {
-      // 常に実⾏する処理
-    });
-}
+
+	// jQueryエリア
+	// FIXME:jQueryとJavasqriptが混在しているので、jQueryに寄せて修正したい
+	window.addEventListener("DOMContentLoaded", function () {
+	  /* alert('jQueryは有効です') */
+	  console.log("jQueryは有効です");
+
+
+	  $(".btn-danger").on("click", function () {
+		    if (window.confirm("この作業は修正できません。本当によろしいですか？")) {
+		      let employeeId = $(this).attr("id");
+		      retireEmployee(employeeId);
+		    } else {
+		      window.alert("キャンセルされました");
+		    }
+		  });
+
+		  //ajaxでemployeeIdを送信し、ページ遷移せずにページ情報を更新
+		  function retireEmployee(employeeId) {
+		    console.log("employeeIdは「" + employeeId + "」");
+
+		    Array();
+		    $.ajax({
+		      type: "PUT",
+		      cache: false,
+		      url: "/department/retire/" + employeeId,
+		      data: employeeId,
+		      dataType: "json",
+		    })
+		      .done(function (data) {
+		        /* alert('社員番号「' + employeeId + "」は退職しました"); */
+		        console.log("社員番号「" + employeeId + "」は退職しました");
+		        /* window.location.href = "/department/sector"; */
+		        window.location.reload();
+		      })
+		      .fail(function (jqXHR, textStatus, errorThrown) {
+		        alert("ユーザー更新に失敗しました");
+		      })
+		      .always(function () {
+		        // 常に実行する処理
+		      });
+		  }
+		});

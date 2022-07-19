@@ -14,6 +14,6 @@ public class DepartmentSectorForm {
 	private Integer customer;
 	private Date updateTime;
 	private Boolean hasTempData;
-	/*private String departmentId;*/
+	private String departmentId;
 	private String departmentName;
 }
