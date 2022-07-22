@@ -4,10 +4,10 @@ const $working = document.getElementsByClassName("exsits");
 console.log($working);
 const $retire = document.getElementsByClassName("bg-secondary");
 console.log($retire);
-const $row = document.getElementsByTagName("tr");
-console.log($row);
 
+//検証用
 const $bulkList = document.getElementsByTagName("bulkList");
+console.log("bulkList");
 console.log($bulkList);
 
 // 現職者表示制御
@@ -66,29 +66,14 @@ function selectClick() {
 window.addEventListener("DOMContentLoaded", function () {
   /* alert('jQueryは有効です') */
   console.log("jQueryは有効です");
-  var $form = $('#bulk-form')
+  var $form = $("#bulk-form");
   var $serialize = $form.serialize();
   console.log($serialize);
+
   var $serializeArray = $form.serializeArray();
   console.log($serializeArray);
-
-  /* console.log($(".table tbody tr:last-child input")); */
-
-  // コメント必須チェック設定
-  // function nullChcek() {
-  // $("input").validate({
-  // rules: {
-  // input要素のname: {
-  // 有効化するルール: true,
-  // },
-  // },
-  // messages: {
-  // input要素のname: {
-  // 有効化するルール: "エラーとして表示したい文言",
-  // },
-  // },
-  // });
-  // }
+  console.log("jsonを文字列に");
+  console.log(JSON.stringify($serializeArray));
 
   // リセット
   $(".reset-table").on("click", function () {
@@ -96,30 +81,29 @@ window.addEventListener("DOMContentLoaded", function () {
     $("input").val("");
   });
 
-
   // 行追加
   /* MEMO:行追加と行複製でレコードのid属性（emmployeeIdの重複回避）を削除する */
   $(".insert-row").on("click", function () {
     console.log("行追加");
-    $lastRow = $(".table tbody tr:last-child")
-    $lastRow.clone(true)        // 指定した一番初めの行のHTML要素を複製する
+    $lastRow = $(".table tbody tr:last-child");
+    $lastRow
+      .clone(true) // 指定した一番初めの行のHTML要素を複製する
       .appendTo(".table tbody"); // 複製した要素をtbodyに追加する
     $(".table tbody tr:last-child input").val("").removeAttr("id"); // 追加した行の値をクリアする + id属性を空にする
 
     // 残骸
     /* $lastRow.find("input").val("").removeAttr("id");*/
     /*$(".table tbody tr:last-child input").val("").removeAttr("id");*/ // 追加した行の値をクリアする + id属性を空にする
-
   });
 
   // 行複製
   $(".clone-row").on("click", function () {
     console.log("複製");
-    $lastRow = $(".table tbody tr:last-child")
+    $lastRow = $(".table tbody tr:last-child");
     $lastRow.clone(true).appendTo(".table tbody"); // 追加した行の値をクリアする
     $(".table tbody tr:last-child").find("button").removeAttr("id"); // ボタンのid属性を空にする
 
-    var form = $('#bulk-form')
+    var form = $("#bulk-form");
     var formData = form.serialize();
     console.log(formData);
     var param = form.serializeArray();
@@ -127,22 +111,25 @@ window.addEventListener("DOMContentLoaded", function () {
 
     /*console.log($(".table tbody tr:last-child").find("button").removeAttr("id"));*/
 
-
     /* $(".delete-row").removeAttr("id", "999"); */
-   /* $(".delete-row").empty(); */
+    /* $(".delete-row").empty(); */
     /* $(".table tbody tr:last-child input"); */
   });
 
   // 行削除
   $(".delete-row").on("click", function () {
-    $(this) // クリックした削除ボタンを指定する（ ここがthisであることは重要です ）
-      .closest("tr") // 指定した要素の直近のtr要素を取得する
-      .remove(); // 取得した要素を削除する
+    if ($(".table tbody tr").length > 1) {
+      $(this) // クリックした削除ボタンを指定する（ ここがthisであることは重要です ）
+        .closest("tr") // 指定した要素の直近のtr要素を取得する
+        .remove(); // 取得した要素を削除する
+    } else {
+    	console.log("行を削除できません");
+    }
   });
 
   /*
-	 * $(this).closest("tr").attr(“id");
-	 */
+   * $(this).closest("tr").attr(“id");
+   */
   // 一時保存
   $text = $("input.elemnts");
   console.log($text);
@@ -184,10 +171,11 @@ window.addEventListener("DOMContentLoaded", function () {
   // });
 
   /*
-	 * tmp-save confirm
-	 */
+   * tmp-save confirm
+   */
 
-  $(".btn-danger").on("click", function () {
+  //確定ボタン
+  $(".aaaa").on("click", function () {
     if (window.confirm("この作業は修正できません。本当によろしいですか？")) {
       let employeeId = $(this).attr("id");
       retireEmployee(employeeId);

@@ -14,35 +14,35 @@
 		<div class="header border-bottom">
 			<h1 class="h2">一括社員登録</h1>
 		</div>
-		<div>
-			<button class="btn btn-dark reset-table" type="button">リセット</button>
-			<button class="btn btn-primary insert-row" type="button">行新規</button>
-			<button class="btn btn-secondary clone-row" type="button">行複製</button>
-			<button class="btn btn-warning tmp-save" type="button">一時保存</button>
-			<button class="btn btn-success confirm" type="button">確定</button>
-		</div>
-		<form id="bulk-form">
+		<form name="form" id="bulk-form" method="post" th:action="@{/department/bulk/signup}">
+			<div>
+				<button class="btn btn-dark reset-table" type="button">リセット</button>
+				<button class="btn btn-primary insert-row" type="button">行新規</button>
+				<button class="btn btn-secondary clone-row" type="button">行複製</button>
+				<button class="btn btn-warning tmp-save" type="submit" name="tmpsaves">一時保存</button>
+				<button class="btn btn-success confirm" type="submit" name="confirm">確定</button>
+			</div>
+
 			<div>
 				<table class="table table-striped table-bordered table-hover">
 					<thead class="thead-light">
 						<tr>
-							<!-- <th class="th-width">社員番号</th> -->
 							<th class="th-width">氏名</th>
 							<th class="th-width">担当地区</th>
 							<th class="th-width">売上</th>
 							<th class="th-width">保有顧客数</th>
-							<th class="th-width">課名</th>
-							<!-- <th class="th-width">更新日時</th> -->
+							<th class="th-width">課番号</th>
 							<th></th>
 							<th class="th-width">Temp要否</th>
-							<!-- <th class="th-width">退職要否</th> -->
 						</tr>
 					</thead>
 					<tbody>
 						<!-- th:classappend="${item.employeeNotExsits}? 'exsits' : 'bg-secondary'" -->
 						<tr th:id="${item.employeeId}" class="bulkList" th:each="item: ${departmentList}">
-							<th:block>
+							<th:block th:each="item: ${departmentList}">
 								<input name="employeeId" type="hidden" class="form-control" th:value="${item.employeeId}">
+								<input name="employeeNotExsits" type="hidden" class="form-control" th:value="${item.employeeNotExsits}">
+								<input name="updateTime" type="hidden" class="form-control" th:value="${#dates.format(item.updateTime,'YYYY/MM/dd HH:mm:ss')}">
 							</th:block>
 							<!-- <td>
 								<input name="employeeId" type="hidden" class="form-control" th:value="${item.employeeId}">
@@ -60,7 +60,7 @@
 								<input name="customer" type="text" class="form-control" th:value="${item.customer}">
 							</td>
 							<td>
-								<input name="departmentName" type="text" class="form-control" th:value="${item.departmentName}">
+								<input name="departmentName" type="text" class="form-control" th:value="${item.departmentId}">
 							</td>
 							<td>
 								<button name="employeeId" class="btn btn-danger delete-row" th:id="${item.employeeId}" type="button">削除</button>

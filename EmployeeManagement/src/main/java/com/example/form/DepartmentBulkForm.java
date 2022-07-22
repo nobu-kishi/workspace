@@ -1,10 +1,15 @@
 package com.example.form;
 
 import java.util.Date;
+import java.util.List;
 
+import com.example.domain.user.model.DepartmentSector;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class DepartmentBulkForm {
 	private Integer employeeId;
 	private String employeeName;
@@ -16,4 +21,5 @@ public class DepartmentBulkForm {
 	private Boolean hasTempData;
 	private Integer departmentId;
 	private String departmentName;
+	private List<DepartmentSector> departmentSectorList;
 }

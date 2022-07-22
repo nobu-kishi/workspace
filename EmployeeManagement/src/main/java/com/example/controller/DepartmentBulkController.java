@@ -6,8 +6,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.user.model.DepartmentSector;
@@ -24,7 +26,7 @@ public class DepartmentBulkController {
 	@Autowired
 	private ModelMapper modelMapper;
 
-	/** 退職処理 */
+	/** 初期画面表示 */
 	@GetMapping("/bulk")
 	public String departmentsSales(@ModelAttribute DepartmentBulkForm form, Model model) {
 		System.out.println("一時保存データ読込");
@@ -33,7 +35,6 @@ public class DepartmentBulkController {
 		DepartmentSector dSector = modelMapper.map(form, DepartmentSector.class);
 		List<DepartmentSector> departmentList = departmentService.tempSales(dSector);
 
-
 		System.out.println("フォーム出力値");
 		System.out.println(departmentList);
 
@@ -41,6 +42,45 @@ public class DepartmentBulkController {
 		return "department/bulk";
 	}
 
+	@PostMapping(value = "/bulk/signup", params = "tmpsaves")
+	public String tmpSaves(@ModelAttribute("form") DepartmentBulkForm form, Model model, BindingResult result) {
+
+		/*List<DepartmentSectorForm> departmentSectorForm = new ArrayList<DepartmentSectorForm>();*/
+
+		/*いらないかも modelattributeしているからいらないかも*/
+		model.addAttribute("DepartmentBulkForm", form);
+
+		if (result.hasErrors()) {
+			System.out.println("更新でエラー");
+			return "department/bulk";
+
+		}
+
+		System.out.println("formの値確認");
+		System.out.println(form);
+		System.out.println("送信処理");
+		System.out.println(form.getDepartmentSectorList());
+
+
+
+		/*departmentService.tempSaves(form.getDepartmentSectorList());*/
+		/*一時保存*/
+		/*TODO:リストでformの値を受け取る⇒
+		 *
+		 *
+		 *
+		 *
+		 * Service.tempSaves(form.List<DepartmentSector>)
+		*/
+
+		/*model.addAttribute("departmentBulkForm", form);*/
+
+		/*List<DepartmentBulk> dBulkList = new ArrayList<DepartmentBulk>();
+		dBulkList.add(e);
+		personList.add(person1);*/
+
+		return "redirect:/department/bulk";
+	}
 
 	/** 【見本】ユーザーを更新 */
 	/*	@PutMapping("/update")

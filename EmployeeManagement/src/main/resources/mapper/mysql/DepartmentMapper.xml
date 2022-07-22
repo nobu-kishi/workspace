@@ -185,6 +185,7 @@
 		e.employee_id
 		,e.employee_name
 		,e.employee_not_exsits
+		,e.department_id
 		,s.area
 		,s.profit
 		,s.customer
@@ -205,6 +206,7 @@
 
 
 	<!-- <insert>
+	REPLACE sales
 
 
 	</insert> -->
