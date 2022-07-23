@@ -179,8 +179,8 @@
 
 	<!-- 営業成績取得（tempのみ） -->
 		<!-- FIXME:既存の処理で分岐したい -->
-	<!-- <select id="tempSales" resultMap="DepartmentBulk"> -->
-	<select id="tempSales" resultMap="DepartmentSector">
+	<!-- <select id="getTempSales" resultMap="DepartmentBulk"> -->
+	<select id="getTempSales" resultMap="DepartmentSector">
 		SELECT
 		e.employee_id
 		,e.employee_name
@@ -204,6 +204,31 @@
 		s.has_temp_data = true
 	</select>
 
+	<!-- <update id="saveTempSales" resultMap="DepartmentSector">
+	UPDATE
+		e.employee_id
+		,e.employee_name
+		,e.employee_not_exsits
+		,e.department_id
+		,s.area
+		,s.profit
+		,s.customer
+		,s.update_time
+		,s.has_temp_data
+		,d.department_id
+		,d.department_name
+		FROM employees e
+		JOIN sales s
+		ON e.employee_id =
+		s.employee_id
+		JOIN
+		departments d
+		ON e.department_id = d.department_id
+		WHERE
+		s.has_temp_data = true
+
+
+	</update> -->
 
 	<!-- <insert>
 	REPLACE sales

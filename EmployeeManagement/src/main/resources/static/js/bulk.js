@@ -131,10 +131,10 @@ window.addEventListener("DOMContentLoaded", function () {
    * $(this).closest("tr").attr(“id");
    */
   // 一時保存
-  $text = $("input.elemnts");
+/*  $text = $("input.elemnts");
   console.log($text);
   $empty = $("input").val;
-  console.log($empty);
+  console.log($empty);*/
   // console.log($.trim($empty.text()));
 
   // if (!$('button').val()) {

@@ -21,6 +21,4 @@ public class DepartmentSector {
 	private Boolean hasTempData;
 	private String departmentId;
 	private String departmentName;
-
-
 }

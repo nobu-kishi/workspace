@@ -28,5 +28,5 @@ public interface DepartmentService {
 			Date updateTime);
 
 	/** 営業成績取得（一時保存） */
-	public List<DepartmentSector> tempSales(DepartmentSector dSector);
+	public List<DepartmentSector> getTempSales(DepartmentSector dSector);
 }

@@ -28,17 +28,19 @@ public class DepartmentBulkController {
 
 	/** 初期画面表示 */
 	@GetMapping("/bulk")
-	public String departmentsSales(@ModelAttribute DepartmentBulkForm form, Model model) {
+	public String departmentsSales(@ModelAttribute /*("form")*/ DepartmentBulkForm form, Model model) {
 		System.out.println("一時保存データ読込");
 
 		//部門毎に従業員を抽出
 		DepartmentSector dSector = modelMapper.map(form, DepartmentSector.class);
-		List<DepartmentSector> departmentList = departmentService.tempSales(dSector);
+		List<DepartmentSector> departmentList = departmentService.getTempSales(dSector);
 
 		System.out.println("フォーム出力値");
 		System.out.println(departmentList);
 
+		/*form.setDepartmentSectorList(departmentList);*/
 		model.addAttribute("departmentList", departmentList);
+
 		return "department/bulk";
 	}
 
@@ -50,6 +52,7 @@ public class DepartmentBulkController {
 		/*いらないかも modelattributeしているからいらないかも*/
 		model.addAttribute("DepartmentBulkForm", form);
 
+
 		if (result.hasErrors()) {
 			System.out.println("更新でエラー");
 			return "department/bulk";
@@ -57,10 +60,35 @@ public class DepartmentBulkController {
 		}
 
 		System.out.println("formの値確認");
-		System.out.println(form);
+		/*DepartmentSector dSector = modelMapper.map(form, DepartmentSector.class);*/
+		/*System.out.println(dSector);*/
+		System.out.println(form.getEmployeeId());
+		System.out.println(form.getEmployeeName());
+		System.out.println(form.getArea());
+		System.out.println(form.getProfit());
+		System.out.println(form.getCustomer());
+		System.out.println(form.getUpdateTime());
+		form.getEmployeeId();
+		form.getEmployeeName();
+		form.getArea();
+		form.getProfit();
+		form.getDepartmentId();
+		form.getCustomer();
+
+
 		System.out.println("送信処理");
 		System.out.println(form.getDepartmentSectorList());
 
+		/*try {
+			departmentService.updateSales(form.getEmployeeId(),
+					form.getArea(),
+					form.getProfit(),
+					form.getCustomer(),
+					form.getUpdateTime());
+
+		} catch (Exception e) {
+			log.error("社員情報更新でエラー", e);
+		}*/
 
 
 		/*departmentService.tempSaves(form.getDepartmentSectorList());*/
@@ -81,15 +109,4 @@ public class DepartmentBulkController {
 
 		return "redirect:/department/bulk";
 	}
-
-	/** 【見本】ユーザーを更新 */
-	/*	@PutMapping("/update")
-		public int updateUser(UserDetailForm form) {
-
-			// ユーザーを更新
-			userService.updateUserOne(form.getUserId(),
-					form.getPassword(),
-					form.getUserName());
-			return 0;
-		}*/
 }

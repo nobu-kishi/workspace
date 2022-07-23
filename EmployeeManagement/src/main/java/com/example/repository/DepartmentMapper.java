@@ -33,5 +33,5 @@ public interface DepartmentMapper {
 			@Param("updateTime") Date updateTime);
 
 	/** 営業成績取得（一時保存） */
-	public List<DepartmentSector> tempSales(DepartmentSector dsSector);
+	public List<DepartmentSector> getTempSales(DepartmentSector dSector);
 }

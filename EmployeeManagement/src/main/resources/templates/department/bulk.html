@@ -15,6 +15,7 @@
 			<h1 class="h2">一括社員登録</h1>
 		</div>
 		<form name="form" id="bulk-form" method="post" th:action="@{/department/bulk/signup}">
+			<!-- <form name="form" id="bulk-form"> -->
 			<div>
 				<button class="btn btn-dark reset-table" type="button">リセット</button>
 				<button class="btn btn-primary insert-row" type="button">行新規</button>
@@ -40,9 +41,8 @@
 						<!-- th:classappend="${item.employeeNotExsits}? 'exsits' : 'bg-secondary'" -->
 						<tr th:id="${item.employeeId}" class="bulkList" th:each="item: ${departmentList}">
 							<th:block th:each="item: ${departmentList}">
+								<!-- <input name="employeeName" type="hidden" class="form-control" th:value="${item.employeeName}"> -->
 								<input name="employeeId" type="hidden" class="form-control" th:value="${item.employeeId}">
-								<input name="employeeNotExsits" type="hidden" class="form-control" th:value="${item.employeeNotExsits}">
-								<input name="updateTime" type="hidden" class="form-control" th:value="${#dates.format(item.updateTime,'YYYY/MM/dd HH:mm:ss')}">
 							</th:block>
 							<!-- <td>
 								<input name="employeeId" type="hidden" class="form-control" th:value="${item.employeeId}">
@@ -60,7 +60,7 @@
 								<input name="customer" type="text" class="form-control" th:value="${item.customer}">
 							</td>
 							<td>
-								<input name="departmentName" type="text" class="form-control" th:value="${item.departmentId}">
+								<input name="departmentId" type="text" class="form-control" th:value="${item.departmentId}">
 							</td>
 							<td>
 								<button name="employeeId" class="btn btn-danger delete-row" th:id="${item.employeeId}" type="button">削除</button>
