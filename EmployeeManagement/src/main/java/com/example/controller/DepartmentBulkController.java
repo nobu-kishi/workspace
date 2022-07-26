@@ -50,7 +50,7 @@ public class DepartmentBulkController {
 		/*List<DepartmentSectorForm> departmentSectorForm = new ArrayList<DepartmentSectorForm>();*/
 
 		/*いらないかも modelattributeしているからいらないかも*/
-		model.addAttribute("DepartmentBulkForm", form);
+		model.addAttribute("departmentBulkForm", form);
 
 
 		if (result.hasErrors()) {
@@ -60,24 +60,18 @@ public class DepartmentBulkController {
 		}
 
 		System.out.println("formの値確認");
+		System.out.println(form);
 		/*DepartmentSector dSector = modelMapper.map(form, DepartmentSector.class);*/
 		/*System.out.println(dSector);*/
-		System.out.println(form.getEmployeeId());
-		System.out.println(form.getEmployeeName());
-		System.out.println(form.getArea());
-		System.out.println(form.getProfit());
-		System.out.println(form.getCustomer());
-		System.out.println(form.getUpdateTime());
-		form.getEmployeeId();
-		form.getEmployeeName();
-		form.getArea();
-		form.getProfit();
-		form.getDepartmentId();
-		form.getCustomer();
 
+		/*	System.out.println("セクター型に変換");
+			DepartmentSector departmentSector = modelMapper.map(form, DepartmentSector.class);
+			System.out.println(departmentSector);*/
 
 		System.out.println("送信処理");
+		/*System.out.println(form.getDepartmentSectorList().get(0).getEmployeeId());*/
 		System.out.println(form.getDepartmentSectorList());
+
 
 		/*try {
 			departmentService.updateSales(form.getEmployeeId(),

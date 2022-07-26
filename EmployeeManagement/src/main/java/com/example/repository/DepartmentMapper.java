@@ -34,4 +34,8 @@ public interface DepartmentMapper {
 
 	/** 営業成績取得（一時保存） */
 	public List<DepartmentSector> getTempSales(DepartmentSector dSector);
+
+	/** 一時保存 */
+	/*public List<DepartmentSector> getTempSales(DepartmentSector dSector);*/
+
 }
