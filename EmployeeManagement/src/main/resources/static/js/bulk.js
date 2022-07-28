@@ -2,6 +2,45 @@
 window.addEventListener("DOMContentLoaded", function () {
   // jQuery(function () {
   console.log("jQueryは有効です");
+  // データのバリデーション
+  console.log($("#bulk-form"));
+  $("#bulk-form").validate({
+    rules: {
+      required: true,
+      maxlength: 200,
+    },
+    messages: {
+      required: "** 文章を入力してください **",
+      maxlength: "** 200文字以下で入力して下さい **",
+    },
+    errorPlacement: function (error, element) {
+      element.before(error);
+    },
+  });
+  var myValue = "this_is_value";
+  var myKey = "this_is_key";
+  var obj = { [myKey]: myValue }; // => {"this_is_key": "this_is_value"}
+  console.log(obj);
+
+  // 参考
+  // $("form").validate({
+  //   rules: {
+  //     employeeName: {
+  //       //departmentSectorList[0].employeeName: {
+  //       required: true,
+  //       maxlength: 200,
+  //     },
+  //   },
+  //   messages: {
+  //     departmentSectorList: {
+  //       required: "** 文章を入力してください **",
+  //       maxlength: "** 200文字以下で入力して下さい **",
+  //     },
+  //   },
+  //   errorPlacement: function (error, element) {
+  //     element.before(error);
+  //   },
+  // });
 
   //送信Listの配列番号を自動採番
   function postListNumbering() {
@@ -15,17 +54,17 @@ window.addEventListener("DOMContentLoaded", function () {
           $(this).attr("name", replaceText);
         });
     });
-    console.log("レコードの配列番号を採番");
+    // console.log("レコードの配列番号を採番");
   }
 
   // レコードを生成（初期設定用）
   function createRecord() {
     $("tbody").append(
-      "<tr class='postList'><td><input name='departmentSectorList[0].employeeName' type='text' class='form-control' value=''></td>" +
-        "<td><input name='departmentSectorList[0].area' type='text' class='form-control' value=''></td>" +
-        "<td><input name='departmentSectorList[0].profit' type='text' class='form-control' value=''></td>" +
-        "<td><input name='departmentSectorList[0].customer' type='text' class='form-control' value=''></td>" +
-        "<td><input name='departmentSectorList[0].departmentId' type='text' class='form-control' value=''></td>" +
+      "<tr class='postList'><td><input name='departmentSectorList[0].employeeName' type='text' class='form-control' maxlength='20' required></td>" +
+        "<td><input name='departmentSectorList[0].area' type='text' class='form-control' maxlength='10' required></td>" +
+        "<td><input name='departmentSectorList[0].profit' type='text' class='form-control' pattern='^[0-9]+$' required></td>" +
+        "<td><input name='departmentSectorList[0].customer' type='text' class='form-control' pattern='[0-9]' required></td>" +
+        "<td><input name='departmentSectorList[0].departmentId' type='number' class='form-control' pattern='[0-9]' min='1' max='4' required></td>" +
         "<td><button name='button' class='btn btn-danger delete-row' type='button'>削除</button></td></tr>"
     );
     postListNumbering();
@@ -37,9 +76,10 @@ window.addEventListener("DOMContentLoaded", function () {
   console.log(localData);
   if (localData !== null) {
     console.log("一時保存呼出");
-    //
-    localPostLength = $(localData).length / 5;
-    for (let i = 0; i < localPostLength; i++) {
+    // 一時保存データに応じて、レコードを生成
+    //MEMO:行数をカウントするため、/5を行う
+    localDataLength = $(localData).length / 5;
+    for (let i = 0; i < localDataLength; i++) {
       createRecord();
     }
     //formに値をセット
@@ -54,11 +94,6 @@ window.addEventListener("DOMContentLoaded", function () {
     createRecord();
   }
 
-  // let $form = $("#bulk-form");
-  // let $serialize = $form.serialize();
-  // let $serializeArray = $form.serializeArray();
-  // console.log($serializeArray);
-
   // リセット
   $(".reset-table").on("click", function () {
     console.log("リセット");
@@ -67,13 +102,8 @@ window.addEventListener("DOMContentLoaded", function () {
 
   // 行新規
   $(".insert-row").on("click", function () {
-    console.log("行追加");
-    $lastRow = $(".table tbody tr:last-child");
-    $lastRow
-      .clone(true) // 指定した一番初めの行のHTML要素を複製する
-      .appendTo(".table tbody"); // 複製した要素をtbodyに追加する
-    $(".table tbody tr:last-child input").val("");
-    postListNumbering();
+    console.log("行新規");
+    createRecord();
   });
 
   // 行複製
@@ -108,18 +138,19 @@ window.addEventListener("DOMContentLoaded", function () {
   });
 
   //確定ボタン
-  //TODO:Jsでsubmitする
   $(".confirm").on("click", function () {
-    if (window.confirm("この作業は修正できません。本当によろしいですか？")) {
-      // let employeeId = $(this).attr("id");
-      // retireEmployee(employeeId);
+    if (window.confirm("本当に確定しますか？")) {
+      // window.location.href = "/department";
+      //ローカルストレージを削除する
       localStorage.removeItem("form_data");
     } else {
       window.alert("キャンセルされました");
+      // validationCheck();
+      return false;
     }
   });
 
-  // ajaxでemployeeIdを送信し、ページ遷移せずにページ情報を更新
+  // ajax参考
   function retireEmployee(employeeId) {
     console.log("employeeIdは「" + employeeId + "」");
 

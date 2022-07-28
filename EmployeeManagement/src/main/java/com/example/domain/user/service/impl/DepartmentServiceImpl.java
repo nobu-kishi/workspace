@@ -54,8 +54,18 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	/** 営業成績取得（一時保存） */
-	@Override
-	public List<DepartmentSector> getTempSales(DepartmentSector dSector) {
-		return mapper.getTempSales(dSector);
+	//	@Override
+	//	public List<DepartmentSector> getTempSales(DepartmentSector dSector) {
+	//		return mapper.getTempSales(dSector);
+	//	}
+
+	/** 名前登録（一括）* */
+	public void employeesBulk(List<DepartmentSector> dSectorList) {
+		mapper.employeesBulk(dSectorList);
+	};
+
+	/** 営業成績登録（一括)）* */
+	public void depeartmentsBulk(List<DepartmentSector> dSectorList){
+		mapper.depeartmentsBulk(dSectorList);
 	}
 }

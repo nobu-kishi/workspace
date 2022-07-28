@@ -28,5 +28,11 @@ public interface DepartmentService {
 			Date updateTime);
 
 	/** 営業成績取得（一時保存） */
-	public List<DepartmentSector> getTempSales(DepartmentSector dSector);
+//	public List<DepartmentSector> getTempSales(DepartmentSector dSector);
+
+	/** 名前登録（一括）* */
+	public void employeesBulk(List<DepartmentSector> dSectorList);
+
+	/** 営業成績登録（一括)）* */
+	public void depeartmentsBulk(List<DepartmentSector> dSectorList);
 }

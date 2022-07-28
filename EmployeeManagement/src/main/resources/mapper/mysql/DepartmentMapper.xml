@@ -43,7 +43,6 @@
 		<result column="profit" property="profit" />
 		<result column="customer" property="customer" />
 		<result column="update_time" property="updateTime" />
-		<result column="has_temp_data" property="hasTempData" />
 	</resultMap>
 
 	<!-- マッピング定義(一括社員登録) -->
@@ -52,9 +51,8 @@
 		property="employeeName" />> <result column="employee_not_exsits" property="employeeNotExsits"
 		/> <result column="profit" property="profit" /> <result column="customer"
 		property="customer" /> <result column="update_time" property="updateTime"
-		/> <result column="has_temp_data" property="hasTempData" /> <result column="department_id"
-		property="departmentId" /> <result column="department_name" property="departmentName"
-		/> </resultMap> -->
+		/> <result column="department_id" property="departmentId" /> <result column="department_name"
+		property="departmentName" /> </resultMap> -->
 
 
 	<!-- ■追加課題A -->
@@ -76,8 +74,6 @@
 		e.employee_id = s.employee_id
 		WHERE
 		e.employee_not_exsits= 0
-		AND
-		s.has_temp_data = 0
 		GROUP BY
 		d.department_id
 		,e.employee_not_exsits = 0
@@ -93,21 +89,23 @@
 		,s.profit
 		,s.customer
 		,s.update_time
-		,s.has_temp_data
+
 		FROM employees e
 		JOIN sales s
-		ON e.employee_id =
+		ON
+		e.employee_id =
 		s.employee_id
 		JOIN
 		departments d
 		ON
-		e.department_id = d.department_id
-		WHERE
-		s.has_temp_data = 0
-		<!-- FIXME:全社員取得と部署別取得のSQLを統合したい -->
+		e.department_id =
+		d.department_id
+
+		<!-- WHERE
+		FIXME:全社員取得と部署別取得のSQLを統合したい
 		<if test="departmentId != null">
-			AND d.department_id = #{departmentId}
-		</if>
+			d.department_id = #{departmentId}
+		</if> -->
 	</select>
 
 	<!-- 営業成績取得（全社員） -->
@@ -120,19 +118,17 @@
 		,s.profit
 		,s.customer
 		,s.update_time
-		,s.has_temp_data
+
 		FROM employees e
 		JOIN sales s
 		ON
 		e.employee_id
 		=
 		s.employee_id
-		JOIN
+		<!-- JOIN
 		departments d
 		ON e.department_id =
-		d.department_id
-		WHERE
-		s.has_temp_data = 0
+		d.department_id -->
 	</select>
 
 	<!-- 営業成績取得（個人） -->
@@ -176,10 +172,10 @@
 		#{profit} ,customer = #{customer} ,update_time = #{updateTime} WHERE employee_id
 		= #{employeeId} </update> -->
 
-	<!-- 営業成績取得（tempのみ） -->
+	<!-- 営業成績取得（一時保存のみ） -->
 	<!-- FIXME:既存の処理で分岐したい -->
 	<!-- <select id="getTempSales" resultMap="DepartmentBulk"> -->
-	<select id="getTempSales" resultMap="DepartmentSector">
+	<!-- <select id="getTempSales" resultMap="DepartmentSector">
 		SELECT
 		e.employee_id
 		,e.employee_name
@@ -189,8 +185,7 @@
 		,s.profit
 		,s.customer
 		,s.update_time
-		,s.has_temp_data
-		<!-- ,d.department_id -->
+		,d.department_id
 		,d.department_name
 		FROM employees e
 		JOIN sales s
@@ -199,30 +194,37 @@
 		JOIN
 		departments d
 		ON e.department_id = d.department_id
-		WHERE
-		s.has_temp_data = true
-	</select>
+	</select> -->
 
-	<!-- tmpsテーブルリセット -->
-	<!-- <delete id=deletetmpsAll>
-		delete from tmps
-	</delete> -->
-
-	<!-- 一時保存 -->
-	<!-- <insert id="saveTempSales" resultMap="DepartmentSector">
-		INSERT INTO tmps
+	<!-- 名前登録（一括） -->
+	<insert id="employeesBulk" parameterType="java.util.List">
+		insert into employees(
+		employee_name
+		,department_id)
 		VALUES
-		<foreach collection="Mapper.javaで設定したパラメーター名"
-			item="departmentSectorList" separator="区切り文字">
-			(
-			#{departmentSectorList.employeeName},
-			#{departmentSectorList.area},
-			#{departmentSectorList.profit},
-			#{departmentSectorList.customer},
-			#{departmentSectorList.departmentId}
-			)
+		<foreach collection="dSectorList" item="dSectorList"
+			separator=",">
+			(#{dSectorList.employeeName}
+			,#{dSectorList.departmentId})
 		</foreach>
-	</insert> -->
+	</insert>
+
+	<!-- 営業成績登録（一括) -->
+	<insert id="depeartmentsBulk" parameterType="java.util.List">
+		INSERT INTO sales(
+		area
+		,profit
+		,customer)
+		VALUES
+		<foreach collection="dSectorList" item="dSectorList"
+			separator=",">
+			(#{dSectorList.area},
+			#{dSectorList.profit},
+			#{dSectorList.customer})
+		</foreach>
+	</insert>
 
 	<!-- <insert> REPLACE sales </insert> -->
+
+
 </mapper>

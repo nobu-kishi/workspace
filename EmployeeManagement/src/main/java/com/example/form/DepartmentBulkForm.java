@@ -18,7 +18,6 @@ public class DepartmentBulkForm {
 	private Integer profit;
 	private Integer customer;
 	private Date updateTime;
-	private Boolean hasTempData;
 	private Integer departmentId;
 	private String departmentName;
 	private List<DepartmentSector> departmentSectorList;

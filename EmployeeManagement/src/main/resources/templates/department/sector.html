@@ -69,11 +69,10 @@
 							<th class="th-width">更新日時</th>
 							<th></th>
 							<th></th>
-							<th class="th-width">存在要否</th>
+							<th class="th-width">退職者</th>
 						</tr>
 					</thead>
 					<tbody id="exsitsList">
-
 						<!-- MEMO: exsits:活性化 bg-secondary:非活性 -->
 						<tr th:each="item: ${departmentList}" th:classappend="${item.employeeNotExsits}? 'bg-secondary' : 'exsits'">
 							<td th:text="${item.employeeId}"></td>

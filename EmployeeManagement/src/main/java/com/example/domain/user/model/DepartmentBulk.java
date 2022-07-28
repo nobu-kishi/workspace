@@ -16,7 +16,6 @@ public class DepartmentBulk {
 	private Integer profit;
 	private Integer customer;
 	private Date updateTime;
-	private Boolean hasTempData;
 	private String departmentId;
 	private String departmentName;
 }

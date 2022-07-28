@@ -12,7 +12,8 @@
 		<result column="employee_phone;" property="employeePhone;" />
 		<result column="employee_email" property="employeeEmail" />
 		<result column="employee_join_date" property="employeeJoinDate" />
-		<result column="employee_not_exsits" property="employeeNotExsits" />
+		<result column="employee_not_exsits"
+			property="employeeNotExsits" />
 		<result column="department_id" property="departmentId" />
 		<collection property="departmentList"
 			resultMap="department" />
@@ -117,4 +118,6 @@
 		WHERE
 		employee_id = #{employeeId};
 	</update>
+
+
 </mapper>

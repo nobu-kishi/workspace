@@ -38,4 +38,10 @@ public interface DepartmentMapper {
 	/** 一時保存 */
 	/*public List<DepartmentSector> getTempSales(DepartmentSector dSector);*/
 
+	/** 名前登録（一括）* */
+	public void employeesBulk(@Param("dSectorList") List<DepartmentSector> dSectorList);
+
+	/** 営業成績登録（一括)）* */
+	public void depeartmentsBulk(@Param("dSectorList") List<DepartmentSector> dSectorList);
+
 }

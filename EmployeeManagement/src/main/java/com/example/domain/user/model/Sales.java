@@ -11,5 +11,4 @@ public class Sales {
 	private Integer profit;
 	private Integer customer;
 	private Date updateTime;
-	private Integer hasTempData;
 }
