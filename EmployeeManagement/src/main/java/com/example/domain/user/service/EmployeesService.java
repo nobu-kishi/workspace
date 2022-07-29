@@ -25,9 +25,6 @@ public interface EmployeesService {
 	/** ユーザー削除(1件) */
 	public void deleteOne(Integer employeeId);
 
-	/* 部門別集計 */
-	/*	public List<Department> departmentCount(Department department) ;*/
-
 	/*１名退職*/
 	public void retireOne(Integer employeeId);
 }
