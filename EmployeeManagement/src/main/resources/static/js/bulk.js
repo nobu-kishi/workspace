@@ -3,24 +3,24 @@ window.addEventListener("DOMContentLoaded", function () {
   // jQuery(function () {
   console.log("jQueryは有効です");
   // データのバリデーション
-  console.log($("#bulk-form"));
-  $("#bulk-form").validate({
-    rules: {
-      required: true,
-      maxlength: 200,
-    },
-    messages: {
-      required: "** 文章を入力してください **",
-      maxlength: "** 200文字以下で入力して下さい **",
-    },
-    errorPlacement: function (error, element) {
-      element.before(error);
-    },
-  });
-  var myValue = "this_is_value";
-  var myKey = "this_is_key";
-  var obj = { [myKey]: myValue }; // => {"this_is_key": "this_is_value"}
-  console.log(obj);
+  // console.log($("#bulk-form"));
+  // $("#bulk-form").validate({
+  //   rules: {
+  //     required: true,
+  //     maxlength: 200,
+  //   },
+  //   messages: {
+  //     required: "** 文章を入力してください **",
+  //     maxlength: "** 200文字以下で入力して下さい **",
+  //   },
+  //   errorPlacement: function (error, element) {
+  //     element.before(error);
+  //   },
+  // });
+  // var myValue = "this_is_value";
+  // var myKey = "this_is_key";
+  // var obj = { [myKey]: myValue }; // => {"this_is_key": "this_is_value"}
+  // console.log(obj);
 
   // 参考
   // $("form").validate({
