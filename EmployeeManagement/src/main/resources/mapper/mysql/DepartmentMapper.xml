@@ -3,17 +3,6 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- Mapperとxmlのマッピング -->
 <mapper namespace="com.example.repository.DepartmentMapper">
-	<!-- マッピング定義(ユーザー) -->
-	<!-- <resultMap type="com.example.domain.user.model.Employees" id="Employees">
-		<id column="employee_id" property="employeeId" /> <result column="employee_password"
-		property="employeePassword" /> <result column="employee_name" property="employeeName"
-		/> <result column="employee_phone;" property="employeePhone;" /> <result
-		column="employee_email" property="employeeEmail" /> <result column="employee_join_date"
-		property="employeeJoinDate" /> <result column="department_id" property="departmentId"
-		/> <collection property="departmentList" resultMap="department"/> ofType="com.example.domain.user.model.Department"
-		columnPrefix="department_" /> <collection property="salesList" resultMap="sales"
-		ofType="com.example.domain.user.model.Sales" />columnPrefix="sales_" /> </resultMap> -->
-
 	<!-- マッピング定義(部門) -->
 	<resultMap type="com.example.domain.user.model.Department"
 		id="departmentCount">
@@ -44,16 +33,6 @@
 		<result column="customer" property="customer" />
 		<result column="update_time" property="updateTime" />
 	</resultMap>
-
-	<!-- マッピング定義(一括社員登録) -->
-	<!-- <resultMap type="com.example.domain.user.model.DepartmentBulk" id="DepartmentBulk">
-		<id column="employee_id" property="employeeId" /> <result column="employee_name"
-		property="employeeName" />> <result column="employee_not_exsits" property="employeeNotExsits"
-		/> <result column="profit" property="profit" /> <result column="customer"
-		property="customer" /> <result column="update_time" property="updateTime"
-		/> <result column="department_id" property="departmentId" /> <result column="department_name"
-		property="departmentName" /> </resultMap> -->
-
 
 	<!-- ■追加課題A -->
 	<!-- 部門一覧取得（集計） -->
@@ -225,6 +204,4 @@
 	</insert>
 
 	<!-- <insert> REPLACE sales </insert> -->
-
-
 </mapper>
