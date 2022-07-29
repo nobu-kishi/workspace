@@ -1,0 +1,1392 @@
+!SESSION 2022-07-29 12:08:52.674 -----------------------------------------------
+eclipse.buildId=4.14.0.I20191210-0610
+java.version=11.0.5
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ja_JP
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.update.configurator 4 0 2022-07-29 12:09:12.256
+!MESSAGE サイト file:/Z:/Users/Shared/pleiades/eclipse/dropins/MergeDoc/eclipse/ で重複するフィーチャーが検出されました : jp.sourceforge.mergedoc.pleiades
+
+!ENTRY org.springframework.ide.eclipse.batch 4 0 2022-07-29 12:09:16.819
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.batch [1069]
+  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.editors.batch.graph
+    -> Export-Package: org.springframework.ide.eclipse.config.ui.editors.batch.graph; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+       org.springframework.ide.eclipse.config.ui [1099]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.wizard
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.wizard; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+              org.springframework.ide.eclipse.wizard [1119]
+                No resolution report for the bundle.  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.widgets
+    -> Export-Package: org.springframework.ide.eclipse.config.ui.widgets; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.hyperlinks
+    -> Export-Package: org.springframework.ide.eclipse.config.ui.hyperlinks; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.editors
+    -> Export-Package: org.springframework.ide.eclipse.config.ui.editors; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.live 4 0 2022-07-29 12:09:17.116
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.beans.ui.live [1078]
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.beans.ui.live [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.beans.ui.live"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.beans.ui.live [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.beans.ui.live"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.beans.ui.live [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.beans.ui.live"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.livegraph 4 0 2022-07-29 12:09:18.756
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.beans.ui.livegraph [1079]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.beans.ui.live
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.beans.ui.live; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.beans.ui.live [1078]
+         No resolution report for the bundle.  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.beans.ui.live [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.beans.ui.live"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.beans.ui.live [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.beans.ui.live"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.beans.ui.live [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.beans.ui.live"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot 4 0 2022-07-29 12:09:19.584
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot [1083]
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.boot [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.boot [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.boot [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.dash 4 0 2022-07-29 12:09:20.100
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.dash [1084]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+       org.springframework.ide.eclipse.editor.support [1103]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+              org.springframework.ide.eclipse.boot [1083]
+                No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.beans.ui.live
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.beans.ui.live; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.beans.ui.live [1078]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot.launch
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot.launch; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot.launch [1086]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.boot.dash [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.dash"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.boot.dash [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.dash"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=com.google.guava)(bundle-version>=15.0.0))
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.boot.dash [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.dash"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.dash.cf 4 0 2022-07-29 12:09:20.522
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.dash.cf [1085]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+       org.springframework.ide.eclipse.editor.support [1103]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+              org.springframework.ide.eclipse.boot [1083]
+                No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.beans.ui.live
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.beans.ui.live; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.beans.ui.live [1078]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot.dash
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot.dash; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot.dash [1084]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.beans.ui.live
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.beans.ui.live; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot.launch
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot.launch; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+              org.springframework.ide.eclipse.boot.launch [1086]
+                Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+                  -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+                Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+                  -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot.launch
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot.launch; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot.wizard
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot.wizard; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot.wizard [1094]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.maven.pom
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.maven.pom; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+              org.springframework.ide.eclipse.maven.pom [1108]
+                No resolution report for the bundle.  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.boot.dash.cf [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.dash.cf"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.boot.dash.cf [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.dash.cf"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=com.google.guava)(bundle-version>=15.0.0))
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.boot.dash.cf [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.dash.cf"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.launch 4 0 2022-07-29 12:09:21.881
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.launch [1086]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot [1083]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+       org.springframework.ide.eclipse.editor.support [1103]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.boot.launch [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.launch"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.boot.launch [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.launch"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.boot.launch [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.launch"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.launch.livebean 4 0 2022-07-29 12:09:22.022
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.launch.livebean [1087]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.beans.ui.livegraph
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.beans.ui.livegraph; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.beans.ui.livegraph [1079]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.beans.ui.live
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.beans.ui.live; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+              org.springframework.ide.eclipse.beans.ui.live [1078]
+                No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot [1083]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot.launch
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot.launch; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot.launch [1086]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+              org.springframework.ide.eclipse.editor.support [1103]
+                Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+                  -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.beans.ui.live
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.beans.ui.live; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.beans.ui.live [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.beans.ui.live"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.beans.ui.live [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.beans.ui.live"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.beans.ui.live [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.beans.ui.live"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.properties.editor 4 0 2022-07-29 12:09:22.225
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.properties.editor [1088]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot [1083]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+       org.springframework.ide.eclipse.editor.support [1103]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.boot.properties.editor [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.properties.editor"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.boot.properties.editor [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.properties.editor"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.boot.properties.editor [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.properties.editor"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.properties.editor.yaml 4 0 2022-07-29 12:09:22.350
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.properties.editor.yaml [1089]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot [1083]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+       org.springframework.ide.eclipse.editor.support [1103]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot.properties.editor
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot.properties.editor; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot.properties.editor [1088]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.boot.properties.editor.yaml [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.properties.editor.yaml"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.boot.properties.editor.yaml [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.properties.editor.yaml"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.boot.properties.editor.yaml [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.properties.editor.yaml"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.refactoring 4 0 2022-07-29 12:09:22.475
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.refactoring [1090]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+       org.springframework.ide.eclipse.editor.support [1103]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+              org.springframework.ide.eclipse.boot [1083]
+                No resolution report for the bundle.  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.boot.refactoring [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.refactoring"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.boot.refactoring [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.refactoring"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.boot.refactoring [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.refactoring"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.restart 4 0 2022-07-29 12:09:22.803
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.restart [1091]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot.launch
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot.launch; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot.launch [1086]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+              org.springframework.ide.eclipse.boot [1083]
+                No resolution report for the bundle.         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+              org.springframework.ide.eclipse.editor.support [1103]
+                Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+                  -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.boot.launch [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.launch"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.boot.launch [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.launch"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.boot.launch [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.launch"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.validation 4 0 2022-07-29 12:09:22.898
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.validation [1093]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot [1083]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+       org.springframework.ide.eclipse.editor.support [1103]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.boot.validation [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.validation"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.boot.validation [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.validation"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.boot.validation [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.validation"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.wizard 4 0 2022-07-29 12:09:23.412
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.wizard [1094]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot [1083]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+       org.springframework.ide.eclipse.editor.support [1103]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.maven.pom
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.maven.pom; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.maven.pom [1108]
+         No resolution report for the bundle.  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.boot.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.wizard"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.boot.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.wizard"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.boot.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.wizard"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.buildship20 4 0 2022-07-29 12:09:23.678
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.buildship20 [1095]
+  Unresolved requirement: Require-Bundle: org.eclipse.buildship.core; bundle-version="[2.0.0,3.0.0)"; resolution:="optional"
+  Unresolved requirement: Require-Bundle: com.gradleware.tooling.model; resolution:="optional"
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot.wizard
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot.wizard; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot.wizard [1094]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+              org.springframework.ide.eclipse.boot [1083]
+                No resolution report for the bundle.         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+              org.springframework.ide.eclipse.editor.support [1103]
+                Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+                  -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.maven.pom
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.maven.pom; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+              org.springframework.ide.eclipse.maven.pom [1108]
+                No resolution report for the bundle.  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.boot.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.wizard"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.boot.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.wizard"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.boot.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.wizard"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.buildship30 4 0 2022-07-29 12:09:24.522
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.buildship30 [1096]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot; bundle-version="3.9.12"
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot [1083]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot.wizard
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot.wizard; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot.wizard [1094]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.editor.support
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.editor.support; bundle-version="3.9.13.202006180736-RELEASE"
+              org.springframework.ide.eclipse.editor.support [1103]
+                Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+                  -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.maven.pom
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.maven.pom; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+              org.springframework.ide.eclipse.maven.pom [1108]
+                No resolution report for the bundle.  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.buildship30 [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.buildship30"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.buildship30 [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.buildship30"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.buildship30 [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.buildship30"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.config.ui 4 0 2022-07-29 12:09:24.662
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.config.ui [1099]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.wizard
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.wizard; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.wizard [1119]
+         No resolution report for the bundle.  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.editor.support 4 0 2022-07-29 12:09:24.803
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.editor.support [1103]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot [1083]
+         No resolution report for the bundle.  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.editor.support [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.editor.support"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.editor.support [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.editor.support"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.editor.support [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.editor.support"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.editor.support 4 0 2022-07-29 12:09:24.866
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.editor.support [1104]
+  Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.boot
+    -> Bundle-SymbolicName: org.springframework.ide.eclipse.boot; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+       org.springframework.ide.eclipse.boot [1083]
+         No resolution report for the bundle.  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.editor.support [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160804-RELEASE"; osgi.identity="org.springframework.ide.eclipse.editor.support"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.editor.support [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160804-RELEASE"; osgi.identity="org.springframework.ide.eclipse.editor.support"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.editor.support [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160804-RELEASE"; osgi.identity="org.springframework.ide.eclipse.editor.support"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.maven.pom 4 0 2022-07-29 12:09:24.959
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.maven.pom [1108]
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.maven.pom [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.maven.pom"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.maven.pom [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.maven.pom"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.maven.pom [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.maven.pom"; singleton:="true"]
+    require: (osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.webflow.ui 4 0 2022-07-29 12:09:25.131
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.webflow.ui [1116]
+  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.webflow.ui.graph
+    -> Export-Package: org.springframework.ide.eclipse.webflow.ui.graph; bundle-symbolic-name="org.springframework.ide.eclipse.webflow.ui.graph"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+       org.springframework.ide.eclipse.webflow.ui.graph [1118]
+         Unresolved requirement: Import-Package: org.springframework.ide.eclipse.webflow.ui.editor.outline.webflow
+           -> Export-Package: org.springframework.ide.eclipse.webflow.ui.editor.outline.webflow; bundle-symbolic-name="org.springframework.ide.eclipse.webflow.ui.editor"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+              org.springframework.ide.eclipse.webflow.ui.editor [1117]
+                Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.editors.webflow.graph
+                  -> Export-Package: org.springframework.ide.eclipse.config.ui.editors.webflow.graph; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+                     org.springframework.ide.eclipse.config.ui [1099]
+                       Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.wizard
+                         -> Bundle-SymbolicName: org.springframework.ide.eclipse.wizard; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+                            org.springframework.ide.eclipse.wizard [1119]
+                              No resolution report for the bundle.                Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.widgets
+                  -> Export-Package: org.springframework.ide.eclipse.config.ui.widgets; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+                Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.hyperlinks
+                  -> Export-Package: org.springframework.ide.eclipse.config.ui.hyperlinks; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+                Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.editors
+                  -> Export-Package: org.springframework.ide.eclipse.config.ui.editors; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+         Unresolved requirement: Import-Package: org.springframework.ide.eclipse.webflow.ui.editor
+           -> Export-Package: org.springframework.ide.eclipse.webflow.ui.editor; bundle-symbolic-name="org.springframework.ide.eclipse.webflow.ui.editor"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.webflow.ui.editor
+    -> Export-Package: org.springframework.ide.eclipse.webflow.ui.editor; bundle-symbolic-name="org.springframework.ide.eclipse.webflow.ui.editor"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.webflow.ui.editor.outline.webflow
+    -> Export-Package: org.springframework.ide.eclipse.webflow.ui.editor.outline.webflow; bundle-symbolic-name="org.springframework.ide.eclipse.webflow.ui.editor"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.editors
+    -> Export-Package: org.springframework.ide.eclipse.config.ui.editors; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.webflow.ui.editor 4 0 2022-07-29 12:09:25.350
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.webflow.ui.editor [1117]
+  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.editors.webflow.graph
+    -> Export-Package: org.springframework.ide.eclipse.config.ui.editors.webflow.graph; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+       org.springframework.ide.eclipse.config.ui [1099]
+         Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.wizard
+           -> Bundle-SymbolicName: org.springframework.ide.eclipse.wizard; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+              org.springframework.ide.eclipse.wizard [1119]
+                No resolution report for the bundle.  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.widgets
+    -> Export-Package: org.springframework.ide.eclipse.config.ui.widgets; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.hyperlinks
+    -> Export-Package: org.springframework.ide.eclipse.config.ui.hyperlinks; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.editors
+    -> Export-Package: org.springframework.ide.eclipse.config.ui.editors; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.webflow.ui.graph 4 0 2022-07-29 12:09:25.600
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.webflow.ui.graph [1118]
+  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.webflow.ui.editor.outline.webflow
+    -> Export-Package: org.springframework.ide.eclipse.webflow.ui.editor.outline.webflow; bundle-symbolic-name="org.springframework.ide.eclipse.webflow.ui.editor"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+       org.springframework.ide.eclipse.webflow.ui.editor [1117]
+         Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.editors.webflow.graph
+           -> Export-Package: org.springframework.ide.eclipse.config.ui.editors.webflow.graph; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+              org.springframework.ide.eclipse.config.ui [1099]
+                Unresolved requirement: Require-Bundle: org.springframework.ide.eclipse.wizard
+                  -> Bundle-SymbolicName: org.springframework.ide.eclipse.wizard; bundle-version="3.9.13.202006180736-RELEASE"; singleton:="true"
+                     org.springframework.ide.eclipse.wizard [1119]
+                       No resolution report for the bundle.         Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.widgets
+           -> Export-Package: org.springframework.ide.eclipse.config.ui.widgets; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+         Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.hyperlinks
+           -> Export-Package: org.springframework.ide.eclipse.config.ui.hyperlinks; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+         Unresolved requirement: Import-Package: org.springframework.ide.eclipse.config.ui.editors
+           -> Export-Package: org.springframework.ide.eclipse.config.ui.editors; bundle-symbolic-name="org.springframework.ide.eclipse.config.ui"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+  Unresolved requirement: Import-Package: org.springframework.ide.eclipse.webflow.ui.editor
+    -> Export-Package: org.springframework.ide.eclipse.webflow.ui.editor; bundle-symbolic-name="org.springframework.ide.eclipse.webflow.ui.editor"; bundle-version="3.9.13.202006180736-RELEASE"; version="0.0.0"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.wizard 4 0 2022-07-29 12:09:25.991
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.wizard [1119]
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.ide.eclipse.wizard [osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.wizard"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.8.4))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.tooling.ls.eclipse.gotosymbol 4 0 2022-07-29 12:09:26.053
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.tooling.ls.eclipse.gotosymbol [1132]
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.springframework.tooling.ls.eclipse.gotosymbol [osgi.identity; type="osgi.bundle"; version:Version="4.5.0.201912170939"; osgi.identity="org.springframework.tooling.ls.eclipse.gotosymbol"; singleton:="true"] because it is exposed to package 'com.google.common.base' from resources com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"] and net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"] via two dependency chains.
+
+Chain 1:
+  org.springframework.tooling.ls.eclipse.gotosymbol [osgi.identity; type="osgi.bundle"; version:Version="4.5.0.201912170939"; osgi.identity="org.springframework.tooling.ls.eclipse.gotosymbol"; singleton:="true"]
+    require: (osgi.wiring.bundle=com.google.guava)
+     |
+    provide: osgi.wiring.bundle: com.google.guava
+  com.google.guava [osgi.identity; type="osgi.bundle"; version:Version="30.1.0.v20210127-2300"; osgi.identity="com.google.guava"]
+
+Chain 2:
+  org.springframework.tooling.ls.eclipse.gotosymbol [osgi.identity; type="osgi.bundle"; version:Version="4.5.0.201912170939"; osgi.identity="org.springframework.tooling.ls.eclipse.gotosymbol"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.springsource.ide.eclipse.commons.livexp)(bundle-version>=3.9.2.201711101829))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="3.9.11.201912160745-RELEASE"; osgi.wiring.bundle="org.springsource.ide.eclipse.commons.livexp"
+  org.springsource.ide.eclipse.commons.livexp [osgi.identity; type="osgi.bundle"; version:Version="3.9.11.201912160745-RELEASE"; osgi.identity="org.springsource.ide.eclipse.commons.livexp"]
+    import: (osgi.wiring.package=com.google.common.base)
+     |
+    export: osgi.wiring.package: com.google.common.base
+  net.sf.eclipsecs.checkstyle [osgi.identity; type="osgi.bundle"; version:Version="8.27.0.201912072106"; osgi.identity="net.sf.eclipsecs.checkstyle"]
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.live 4 0 2022-07-29 12:09:27.553
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.beans.ui.live [1216]
+  Another singleton bundle selected: osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.beans.ui.live"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot 4 0 2022-07-29 12:09:27.553
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot [1217]
+  Another singleton bundle selected: osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.dash 4 0 2022-07-29 12:09:27.569
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.dash [1218]
+  Another singleton bundle selected: osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.dash"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.launch 4 0 2022-07-29 12:09:27.569
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.launch [1219]
+  Another singleton bundle selected: osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.launch"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.refactoring 4 0 2022-07-29 12:09:27.569
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.refactoring [1220]
+  Another singleton bundle selected: osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.refactoring"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.restart 4 0 2022-07-29 12:09:27.569
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.restart [1221]
+  Another singleton bundle selected: osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.restart"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.validation 4 0 2022-07-29 12:09:27.569
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.validation [1223]
+  Another singleton bundle selected: osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.validation"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.boot.wizard 4 0 2022-07-29 12:09:27.584
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.boot.wizard [1224]
+  Another singleton bundle selected: osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.boot.wizard"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.buildship20 4 0 2022-07-29 12:09:27.584
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.buildship20 [1225]
+  Another singleton bundle selected: osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.buildship20"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.buildship30 4 0 2022-07-29 12:09:27.584
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.buildship30 [1226]
+  Another singleton bundle selected: osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.buildship30"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.imports 4 0 2022-07-29 12:09:27.600
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.imports [1227]
+  Another singleton bundle selected: osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.imports"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.springframework.ide.eclipse.xml.namespaces 4 0 2022-07-29 12:09:27.600
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.springframework.ide.eclipse.xml.namespaces [1228]
+  Another singleton bundle selected: osgi.identity; type="osgi.bundle"; version:Version="3.9.13.202006180736-RELEASE"; osgi.identity="org.springframework.ide.eclipse.xml.namespaces"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1778)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.eclipse.m2e.logback.configuration 4 0 2022-07-29 12:09:37.600
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.m2e.logback.configuration [662]
+  Unresolved requirement: Require-Bundle: ch.qos.logback.classic; bundle-version="0.9.24"
+    -> Bundle-SymbolicName: ch.qos.logback.classic; bundle-version="1.2.3.v20200428-2012"
+       ch.qos.logback.classic [6]
+         Unresolved requirement: Import-Package: org.codehaus.groovy.control; version="[2.4.0,3.0.0)"; resolution:="optional"
+         Unresolved requirement: Import-Package: org.codehaus.groovy.control.customizers; version="[2.4.0,3.0.0)"; resolution:="optional"
+         Unresolved requirement: Import-Package: org.codehaus.groovy.reflection; version="[2.4.0,3.0.0)"; resolution:="optional"
+         Unresolved requirement: Import-Package: org.codehaus.groovy.runtime; version="[2.4.0,3.0.0)"; resolution:="optional"
+         Unresolved requirement: Import-Package: org.codehaus.groovy.runtime.callsite; version="[2.4.0,3.0.0)"; resolution:="optional"
+         Unresolved requirement: Import-Package: org.codehaus.groovy.runtime.typehandling; version="[2.4.0,3.0.0)"; resolution:="optional"
+         Unresolved requirement: Import-Package: org.codehaus.groovy.runtime.wrappers; version="[2.4.0,3.0.0)"; resolution:="optional"
+         Unresolved requirement: Import-Package: org.codehaus.groovy.transform; version="[2.4.0,3.0.0)"; resolution:="optional"
+         Unresolved requirement: Import-Package: org.slf4j.spi; version="[1.7.25,2.0.0)"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:462)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1844)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1837)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1780)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1742)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1664)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.eclipse.ui 2 0 2022-07-29 12:18:19.744
+!MESSAGE 'org.eclipse.ui.commandImages' 拡張ポイントからの画像解析中の警告です。
+!SUBENTRY 1 org.eclipse.ui 2 0 2022-07-29 12:18:19.744
+!MESSAGE 未定義コマンドへバインドできません: plug-in='com.genuitec.eclipse.theming.ui', id='com.genuitec.myeclipse.help.darktheme.commandid'
+
+!ENTRY com.genuitec.eclipse.theming.ui 1 0 2022-07-29 12:18:33.513
+!MESSAGE A DevStyle Theme is being activated on this workspace; preparing colors and configuration
+
+!ENTRY com.genuitec.eclipse.theming.ui 1 0 2022-07-29 12:18:33.700
+!MESSAGE DevStyle has archived current color configurations to alternate preferences - will be restored when switching out of the DevStyle Theme
+
+!ENTRY org.eclipse.jface.text 2 0 2022-07-29 12:18:57.823
+!MESSAGE 重複テンプレート ID: 'zigen.plugin.db.template.sql.case'
+
+!ENTRY org.eclipse.jface.text 2 0 2022-07-29 12:19:06.370
+!MESSAGE 重複テンプレート ID: 'zigen.plugin.db.template.sql.case'

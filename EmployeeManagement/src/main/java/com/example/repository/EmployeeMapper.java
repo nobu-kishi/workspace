@@ -29,11 +29,6 @@ public interface EmployeeMapper {
 	/** ユーザー削除(1件) */
 	public int deleteOne(@Param("employeeId") Integer employeeId);
 
-	/* 部門一覧取得（集計） */
-	/*public List<Department> departmentCount(Department department);*/
-
-	/** 社員別営業成績一覧 */
-	/*public List<Employees> departmentsSales(@Param("departmentId") Integer departmentId);*/
-
+	/* 1名退職 */
 	public void retireOne(@Param("employeeId" ) Integer employeeId);
 }
