@@ -50,18 +50,6 @@ public class EmployeesServiceImpl implements EmployeesService {
 		int count = mapper.deleteOne(employeeId);
 	}
 
-	/* 部門別集計 */
-	/*	@Override
-		public List<Department> departmentCount(Department department) {
-			return mapper.departmentCount(department);
-		}*/
-
-	/** 社員別営業成績一覧 */
-	/*	@Override
-		public List<Employees> departmentsSales(Integer departmentId) {
-			return mapper.departmentsSales(departmentId);
-		}*/
-
 	@Override
 	public void retireOne(Integer employeeId) {
 		mapper.retireOne(employeeId);
