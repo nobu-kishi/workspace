@@ -118,6 +118,4 @@
 		WHERE
 		employee_id = #{employeeId};
 	</update>
-
-
 </mapper>
