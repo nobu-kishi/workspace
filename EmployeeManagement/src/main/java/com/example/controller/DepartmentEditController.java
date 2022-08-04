@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,10 @@ public class DepartmentEditController {
 	@GetMapping("/employee/{employeeId:.+}")
 	public String getEmployees(DepartmentEditForm form, Model model,
 			@PathVariable("employeeId") Integer employeeId) {
+
+		Date nowDate = new Date();
+		System.out.println(nowDate);
+
 		System.out.println("編集画面表示開始");
 		DepartmentSector dSector = departmentService.personalSales(employeeId);
 		System.out.println("SQL抽出結果");
@@ -49,7 +54,7 @@ public class DepartmentEditController {
 	/** ユーザー更新処理 */
 	/*@PostMapping(value = "/employee", params = "update")*/
 	@PostMapping("/employee")
-	public String updateEmployees(DepartmentEditForm form, Model model) {
+	public String updateEmployees(@ModelAttribute DepartmentEditForm form, Model model) {
 		System.out.println("更新処理開始");
 		Date nowDate = new Date();
 		form.setUpdateTime(nowDate);
