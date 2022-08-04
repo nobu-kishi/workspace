@@ -44,6 +44,9 @@ public class EmployeeSignupController {
 			@ModelAttribute @Validated(GroupOrder.class) EmployeesSignupForm form,
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
+
+			System.out.println("社員登録でエラー");
+			System.out.println(form);
 			return getSignup(model, locale, form);
 		}
 		log.info(form.toString());
@@ -51,6 +54,9 @@ public class EmployeeSignupController {
 		// Emploeesに型変換して登録
 		Employees employees = modelMapper.map(form, Employees.class);
 		EmployeesService.signup(employees);
+
+		System.out.println("社員登録成功");
+		System.out.println(form);
 		return "redirect:/employee/list";
 	}
 }
