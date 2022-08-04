@@ -62,7 +62,7 @@ public class DepartmentBulkController {
 	}
 
 	@PostMapping("/bulk")
-	public String tmpSaves(@Validated @ModelAttribute("form") DepartmentBulkForm form, Model model, Locale locale,
+	public String completeRegist(@Validated @ModelAttribute("form") DepartmentBulkForm form, Model model, Locale locale,
 			BindingResult bindingResult) {
 		System.out.println("ポスト処理");
 		/*	List<DepartmentSectorForm> departmentSectorForm = new ArrayList<DepartmentSectorForm>();*/
